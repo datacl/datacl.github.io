@@ -1,0 +1,129 @@
+#############################
+# Xups for Hexo主题配置文件
+# Jelon
+# http://jelon.top
+#############################
+
+#----------------------------
+# 头部导航
+#----------------------------
+menu:
+  home:
+    name: 首页
+    link: /
+    icon: icon-home
+  comment:
+    name: 留言
+    link: /comment/
+    icon: icon-comment
+
+#----------------------------
+# 副导航
+#----------------------------
+subnav:
+  github: "#"
+  weibo: "#"
+  rss: "#"
+  zhihu: "#"
+
+#----------------------------
+# RSS
+#----------------------------
+rss: /atom.xml
+
+#----------------------------
+# Favicon
+#----------------------------
+favicon: /favicon.ico
+
+#----------------------------
+# 头像url
+#----------------------------
+avatar: /img/jelon.jpg
+
+#----------------------------
+# 是否开启分享
+#----------------------------
+share: true
+
+#----------------------------
+# 侧栏是否显示微博秀
+#----------------------------
+#weibo_show:
+#  enable: false
+#  code: <iframe id="myWeibo" width="100%" height="550" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=550&fansRow=2&ptype=1&speed=0&skin=1&isTitle=0&noborder=0&isWeibo=1&isFans=0&uid=2376003112&verifier=796ea597&dpc=1"></iframe>
+
+#----------------------------
+# 是否使用网易云跟帖
+#----------------------------
+gentie:
+  enable: true
+  productKey: c06bb9930e6f4b38a9997cb9bd17aba5
+
+#----------------------------
+# 是否开启云标签
+#----------------------------
+tagcloud: true
+
+#----------------------------
+# 友情链接
+#----------------------------
+friends:
+  enable: true
+  list:
+    1:
+      name: Haoren博客
+      title: 网络安全博客
+      link: http://blog.sina.com.cn/u/1825875765
+    2:
+      name: Maxwell博客
+      title: 技术博客
+      link: http://ouyangyewei.me/
+    3:
+      name: 朱旋个人博客
+      title: 技术博客
+      link: http://xuanzh.cc/
+
+#----------------------------
+# 头部链接
+#----------------------------
+head_links:
+  enable: true
+  list:
+    sup:
+      0:
+        name: Coding
+        link: https://coding.net/u/jangdelong
+      1:
+        name: Github
+        link: https://github.com/jangdelong
+      last:
+        name: 百度统计
+        link: http://tongji.baidu.com/web/welcome/login
+    sub:
+      sinaweibo:
+        name: 新浪微博
+        link: http://weibo.com/jangdelong
+      qqweibo:
+        name: Facebook
+        link: https://www.facebook.com/profile.php?id=100011855760219&ref=bookmarks
+#----------------------------
+# SEO
+#----------------------------
+SEO:
+  keywords: Jelon, 前端, Web, 张德龙, 前端开发
+  description: Jelon个人前端小站
+
+#----------------------------
+# 百度分析
+#----------------------------
+baidu_analytics: true
+
+#----------------------------
+# 高亮样式
+#----------------------------
+highlight_theme: normal
+#----------------------------
+# CDN
+#----------------------------
+CDN: //7xs305.com1.z0.glb.clouddn.com/
