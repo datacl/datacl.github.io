@@ -79,23 +79,23 @@ friends:
 head_links:
   enable: true
   list:
-    sup:
+#    sup:
+#      0:
+#        name: Coding
+#        link: https://coding.net/u/jangdelong
       0:
-        name: Coding
-        link: https://coding.net/u/jangdelong
-      1:
         name: Github
-        link: https://github.com/jangdelong
-      last:
-        name: 百度统计
-        link: http://tongji.baidu.com/web/welcome/login
-    sub:
-      sinaweibo:
-        name: 新浪微博
-        link: http://weibo.com/jangdelong
-      qqweibo:
-        name: Facebook
-        link: https://www.facebook.com/profile.php?id=100011855760219&ref=bookmarks
+        link: https://github.com/datacl
+#      last:
+#        name: 百度统计
+#        link: http://tongji.baidu.com/web/welcome/login
+#    sub:
+#      sinaweibo:
+#        name: 新浪微博
+#        link: http://weibo.com/jangdelong
+#      qqweibo:
+#        name: Facebook
+#        link: https://www.facebook.com/profile.php?id=100011855760219&ref=bookmarks
 #----------------------------
 # SEO
 #----------------------------
