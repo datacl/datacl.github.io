@@ -22,9 +22,6 @@ menu:
 #----------------------------
 subnav:
   github: "#"
-  weibo: "#"
-  rss: "#"
-  zhihu: "#"
 
 #----------------------------
 # RSS
@@ -72,17 +69,9 @@ friends:
   enable: true
   list:
     1:
-      name: Haoren博客
-      title: 网络安全博客
-      link: http://blog.sina.com.cn/u/1825875765
-    2:
-      name: Maxwell博客
-      title: 技术博客
-      link: http://ouyangyewei.me/
-    3:
-      name: 朱旋个人博客
-      title: 技术博客
-      link: http://xuanzh.cc/
+      name: Miller博客
+      title: 数据挖掘博客
+      link: http://www.idataskys.com/
 
 #----------------------------
 # 头部链接
