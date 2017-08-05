@@ -27,4 +27,4 @@ branches:
     - datacl-source
 env:
  global:
-   - GH_REF: https://github.com/datacl/datacl.github.io.git
+   - GH_REF: github.com/datacl/datacl.github.io.git
