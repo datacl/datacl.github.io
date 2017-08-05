@@ -141,7 +141,7 @@
  */
 var JELON = function() {
     return {
-        name: 'JELON',
+        name: 'Datacl',
         version: '0.0.2',
         init: function() {
             this.toggleMenu();

@@ -53,9 +53,9 @@ share: true
 #----------------------------
 # 是否使用网易云跟帖
 #----------------------------
-#gentie:
-#  enable: true
-#  productKey: c06bb9930e6f4b38a9997cb9bd17aba5
+gentie:
+  enable: true
+  productKey: c06bb9930e6f4b38a9997cb9bd17aba5
 
 #----------------------------
 # 是否开启云标签
@@ -106,7 +106,7 @@ SEO:
 #----------------------------
 # 百度分析
 #----------------------------
-#baidu_analytics: true
+baidu_analytics: true
 
 #----------------------------
 # 高亮样式
@@ -115,4 +115,4 @@ highlight_theme: normal
 #----------------------------
 # CDN
 #----------------------------
-#CDN: //7xs305.com1.z0.glb.clouddn.com/
+CDN: //7xs305.com1.z0.glb.clouddn.com/
