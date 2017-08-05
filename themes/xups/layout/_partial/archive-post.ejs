@@ -33,10 +33,12 @@
         <div class="post-thumbnail" data-img="<%- post.photos[0] %>">
             <a href="<%= post.permalink %>" title="<%= post.title %>">
                 <% if (post.thumbnail) { %>
-                    <!--
+                    
                     <%- image_tag(post.thumbnail, { class: "thumbnail" }) %>
-                    -->
+<!--
+                    
                     <img class="thumbnail" src="<%- url_for('img/default.png') %>" data-echo="<%= post.thumbnail %>" alt="<%= post.title %>" >
+-->
                 <% } else if (post.photos.length) { %>
                     <img class="thumbnail" src="<%- url_for('img/default.png') %>" data-echo="<%= url_for(post.photos[0]) %>" alt="<%= post.title %>" >
                 <% } else if (theme.CDN) { %>
