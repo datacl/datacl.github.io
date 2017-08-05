@@ -1,7 +1,7 @@
 #############################
 # Xups for Hexo主题配置文件
-# Jelon
-# http://jelon.top
+# Datacl
+# http://www.datacl.top
 #############################
 
 #----------------------------
@@ -53,9 +53,9 @@ share: true
 #----------------------------
 # 是否使用网易云跟帖
 #----------------------------
-gentie:
-  enable: true
-  productKey: c06bb9930e6f4b38a9997cb9bd17aba5
+#gentie:
+#  enable: true
+#  productKey: c06bb9930e6f4b38a9997cb9bd17aba5
 
 #----------------------------
 # 是否开启云标签
@@ -100,13 +100,13 @@ head_links:
 # SEO
 #----------------------------
 SEO:
-  keywords: Jelon, 前端, Web, 张德龙, 前端开发
-  description: Jelon个人前端小站
+  keywords: 数据库, 数据仓库, 数据分析, 数据挖掘, 数据整合
+  description: 数据科学
 
 #----------------------------
 # 百度分析
 #----------------------------
-baidu_analytics: true
+#baidu_analytics: true
 
 #----------------------------
 # 高亮样式
@@ -115,4 +115,4 @@ highlight_theme: normal
 #----------------------------
 # CDN
 #----------------------------
-CDN: //7xs305.com1.z0.glb.clouddn.com/
+#CDN: //7xs305.com1.z0.glb.clouddn.com/
