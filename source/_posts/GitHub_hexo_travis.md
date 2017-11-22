@@ -72,6 +72,7 @@ git提交
 git checkout blog-source
 git commit -m "blog"
 git remote show
+git add source/_posts/GitHub_hexo_travis.md
 git remote add origin https://github.com/blog/blog.github.io.git
 git push origin blog-source:blog-source
 ```
