@@ -1,0 +1,6 @@
+git checkout datacl-source
+git commit -m "datacl"
+git remote show
+git add source/_posts/GitHub_hexo_travis.md
+git remote add origin https://github.com/datacl/datacl.github.io.git
+git push origin datacl-source:datacl-source
