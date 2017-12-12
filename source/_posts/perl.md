@@ -19,7 +19,7 @@ require Module::CoreList;
 ```
 
 
-##数值计算
+## 数值计算
 
 ```
 my $pia=3.1415926;
@@ -30,7 +30,7 @@ print "\n";
 ```
 
 
-##计算圆周长 输入半径
+## 计算圆周长 输入半径
 
 ```
 print "输入圆的半径：";
@@ -44,7 +44,7 @@ if ($r < 0 ) {
 ```
 
 
-##多行输入
+## 多行输入
 
 ```
 my @char = <STDIN>;
@@ -52,7 +52,7 @@ print reverse @char;
 ```
 
 
-##求和计算
+## 求和计算
 
 
 ```
@@ -75,7 +75,7 @@ print &total(1..1000);
 ```
 
 
-##字符排序
+## 字符排序
 
 ```
 my @char = <STDIN>;
@@ -90,7 +90,7 @@ foreach my$key(sort { lc($last_name{$a}) cmp  lc($last_name{$b}) } keys %last_na
 ```
 
 
-##位置查找
+## 位置查找
 
 ```
 my $char="This is a test.";
@@ -107,7 +107,7 @@ print "\n";
 ```
 
 
-##目录操作
+## 目录操作
 
 ```
 print "输入需切换目录：";
@@ -132,7 +132,7 @@ print "你现在所在的目录为 $dir\n";
 print join("\n",sort glob(".* *"))."\n";
 ```
 
-##文件操作-删除
+## 文件操作-删除
 
 ```
 unless(@ARGV) {
@@ -143,7 +143,7 @@ unlink ($_);
 }
 ```
 
-##文件操作-重命名
+## 文件操作-重命名
 
 ```
 if ( @ARGV != 2 ) {
@@ -256,7 +256,7 @@ print "$num1 * $num2 = ".$num1*$num2."\n";
 
 
 
-##根据输入匹配姓名
+## 根据输入匹配姓名
 
 ```
 my @fname=("flintstone","rubble","flintstone");
@@ -309,7 +309,7 @@ for $char ( keys %count )
 
 
 
-##文本替换
+## 文本替换
 
 ```
 open(FILE,"<myfile.txt") or die "Can't open myfile: $!";
@@ -416,7 +416,7 @@ foreach (reverse <FILE>){
 
 
 
-##平均数
+## 平均数
 
 ```
 sub average{
