@@ -1,3 +1,4 @@
+git clone -b datacl-source https://github.com/datacl/datacl.github.io.git
 git checkout datacl-source
 git commit -m "datacl"
 git remote show
