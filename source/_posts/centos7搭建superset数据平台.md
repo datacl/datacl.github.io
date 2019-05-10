@@ -39,7 +39,7 @@ cd mysql-5.5.62
 [root@localhost mysql-5.5.62]# ls
 bin      data  include         lib  my.cnf        mysql-test  scripts  sql-bench
 COPYING  docs  INSTALL-BINARY  man  mysql.server  README      share    support-files
-[root@localhost mysql-5.5.62]# scripts/mysql_install_db --user=mysql --basedir=/usr/local/mysql --datadir=/data/mysql
+[root@localhost mysql-5.5.62]# scripts/mysql_install_db --user=mysql --basedir="/opt/mysql-5.5.62" --datadir=/data/mysql
 [root@localhost mysql-5.5.62]# cp support-files/my-medium.cnf my.cnf
 [root@localhost mysql-5.5.62]# cp support-files/mysql.server mysql.server
 [root@localhost mysql-5.5.62]# chmod 777 /tmp/mysql.sock
