@@ -5,3 +5,7 @@ git remote show
 git add source/_posts/GitHub_hexo_travis.md
 git remote add origin https://github.com/datacl/datacl.github.io.git
 git push origin datacl-source:datacl-source
+git reset --hard origin/datacl-source // 强制同步远程仓库
+git fetch --all                //从另一个存储库下载对象和引用
+git reset --hard origin/datacl-source //放弃本地修改
+git pull                       //开始更新
