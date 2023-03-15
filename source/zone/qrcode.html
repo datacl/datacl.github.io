@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+
+    <script src="jquery.min.js"></script>
+    <script src="jquery.qrcode.min.js"></script>
+    <title></title>
+</head>
+<style>
+    #demodiv{
+        text-align: center;
+    }
+    #demodiv>input{
+        outline: none;
+        border: 1px red solid;
+        width: 300px;
+        height: 50px;
+        font-size: 30px;
+        padding-left: 10px;
+    }
+</style>
+<body>
+        <div id="demodiv" >
+            <h1>QRCode生成二维码</h1>
+            <input type="text"/>
+            <!--调用转换方法-->
+            <button onclick="demo()">点我生成</button>
+        </div>
+<div id="code"></div>
+</body>
+<script>
+    function demo(){
+       //获取输入框结果
+       var text=$("#demodiv>input").val();
+        //调用装换方法
+        var newText=utf16to8(text)
+        $("#code").empty()
+        //设置范围大小并且设置生成二维码内容
+        $("#code").qrcode({wihth:150,height:200,text:newText});
+    }
+    function utf16to8(str) {  
+        var out, i, len, c;  
+        out = "";  //创建空变量保存结果
+        len = str.length; //设置传入形参数据长度
+        for(i = 0; i < len; i++) {  
+            c = str.charCodeAt(i);  //返回字符串第一个字符的 Unicode 编码: 
+            if ((c >= 0x0001) && (c <= 0x007F)) {  //判断Unicode 编码范围
+                out += str.charAt(i);  
+            } else if (c > 0x07FF) {  
+                //将 Unicode 编码转为一个字符
+                out += String.fromCharCode(0xE0 | ((c >> 12) & 0x0F));  
+                out += String.fromCharCode(0x80 | ((c >>  6) & 0x3F));  
+                out += String.fromCharCode(0x80 | ((c >>  0) & 0x3F));  
+            } else {  
+                //将 Unicode 编码转为一个字符
+                out += String.fromCharCode(0xC0 | ((c >>  6) & 0x1F));  
+                out += String.fromCharCode(0x80 | ((c >>  0) & 0x3F));  
+            }  
+        }  
+        //返回出结果
+        return out;
+    }
+
+</script>
+</html>
