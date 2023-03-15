@@ -5,7 +5,15 @@ git remote show
 git add source/_posts/GitHub_hexo_travis.md
 git remote add origin https://github.com/datacl/datacl.github.io.git
 git push origin datacl-source:datacl-source
-git reset --hard origin/datacl-source // Ç¿ÖÆÍ¬²½Ô¶³Ì²Ö¿â
-git fetch --all                //´ÓÁíÒ»¸ö´æ´¢¿âÏÂÔØ¶ÔÏóºÍÒýÓÃ
-git reset --hard origin/datacl-source //·ÅÆú±¾µØÐÞ¸Ä
-git pull                       //¿ªÊ¼¸üÐÂ
+git reset --hard origin/datacl-source // Ç¿ï¿½ï¿½Í¬ï¿½ï¿½Ô¶ï¿½Ì²Ö¿ï¿½
+git fetch --all                //ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½æ´¢ï¿½ï¿½ï¿½ï¿½ï¿½Ø¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+git reset --hard origin/datacl-source //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Þ¸ï¿½
+git pull                       //ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½
+
+
+cd ./public
+git init
+git add .
+git commit -m "Update docs"
+git push --force --quiet "https://github.com/datacl/datacl.github.io.git" master:master
+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
