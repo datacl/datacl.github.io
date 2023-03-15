@@ -1,0 +1,341 @@
+<!doctype html>
+<html lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=11,IE=10,IE=9,IE=8">
+    <meta name="baidu-site-verification" content="dIcXMeY8Ya">
+    
+    <title>esayui express实现web数据查询功能 | 数据酷</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+    <meta name="keywords" content="数据库, 数据仓库, 数据分析, 数据挖掘, 数据整合">
+    <meta name="description" content="数据科学">
+
+    
+    <link rel="alternative" href="/atom.xml" title="数据酷" type="application/atom+xml">
+    
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    
+    <link rel="stylesheet" href="/css/style.css">
+    <!--[if lt IE 9]>
+    <script src="/js/html5.js"></script>
+    <![endif]-->
+    
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "//hm.baidu.com/hm.js?fd459238242776d173cdc64918fb32f2";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+
+    
+    <script>var yunModuleEnv = true;</script>
+    <script src="https://img1.cache.netease.com/f2e/tie/yun/sdk/loader.js"></script>
+    
+</head>
+</html>
+<body class="home">
+    <!--[if lt IE 9]>
+    <div class="browsehappy">
+        当前网页 <strong>不支持</strong>
+        你正在使用的浏览器. 为了正常的访问, 请 <a href="http://browsehappy.com/">升级你的浏览器</a>.
+    </div>
+    <![endif]-->
+
+    <!-- 博客头部 -->
+    <header class="header">
+    <section class="container header-main">
+        <div class="logo">
+            <a href="/">
+                <div class="cover">
+                    <span class="name">数据酷</span>
+                    <span class="description">工欲善其事必先利其器</span>
+                </div>
+            </a>
+        </div>
+        <div class="dropnav icon-paragraph-justify" id="JELON__btnDropNav"></div>
+        <ul class="menu hidden" id="JELON__menu">
+            
+            <li rel="/2018/12/08/esayui express实现web数据查询功能/index.html" class="item ">
+                <a href="/" title="首页" class="icon-home">&nbsp;首页</a>
+            </li>
+            
+            <li rel="/2018/12/08/esayui express实现web数据查询功能/index.html" class="item ">
+                <a href="/comment/" title="留言" class="icon-comment">&nbsp;留言</a>
+            </li>
+            
+        </ul>
+        <div class="profile clearfix">
+            <div class="feeds fl">
+                
+                
+                <p class="links">
+                    
+                </p>
+                <p class="sns">
+                    
+                    <a href="javascript: void(0);" class="wechat">
+                        <b>■</b>
+                        公众号
+                        <span class="popover">
+                            <img src="/img/wechat_mp.jpg" width="120" height="120" alt="我的微信订阅号">
+                            <i class="arrow"></i>
+                        </span>
+                    </a>
+                </p>
+                
+            </div>
+            <div class="avatar fr">
+                <img src="/img/jelon.jpg" alt="avatar" title="Datacl" >
+            </div>
+        </div>
+    </section>
+</header>
+
+
+    <!-- 博客正文 -->
+    <div class="container body clearfix">
+        <section class="content">
+            <div class="content-main widget">
+                <!-- 文章页 -->
+<!-- 文章 -->
+<article class="post article">
+    <header class="text-center">
+        <h3 class="post-title"><span>esayui express实现web数据查询功能</span></h3>
+    </header>
+    <p class="post-meta text-center">
+        杨金坤 发表于
+        <time datetime="2018-12-07T16:00:00.000Z">2018-12-08</time>
+    </p>
+    <div class="post-content">
+        <h1 id="esayui-express实现web数据查询功能"><a href="#esayui-express实现web数据查询功能" class="headerlink" title="esayui express实现web数据查询功能"></a>esayui express实现web数据查询功能</h1><h2 id="服务端代码"><a href="#服务端代码" class="headerlink" title="服务端代码"></a>服务端代码</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">const express = require(&apos;express&apos;)</span><br><span class="line">const app = express()</span><br><span class="line">const odbc = require(&apos;node-odbc&apos;);</span><br><span class="line">app.use(express.static(&apos;public&apos;))</span><br><span class="line">app.get(&apos;/&apos;, (req, res) =&gt; res.send(&apos;Hello World!&apos;))</span><br><span class="line">app.get(&apos;/sql/type/:type/db_name/:db_name/sqlstr/:sqlstr&apos;, function (req, res) &#123;</span><br><span class="line">	console.log(&apos;Dsn=&apos; + req.params.type +&apos;;UID=root;PWD=root;DATABASE=&apos; + req.params.db_name);</span><br><span class="line">	let conn = new odbc.Connection().connect(&apos;Dsn=&apos; + req.params.type +&apos;;UID=root;PWD=root;DATABASE=&apos; + req.params.db_name);</span><br><span class="line">	//console.log(decodeURI(req.params.sqlstr).replace(/\+/g,&apos; &apos;));</span><br><span class="line">	conn.executeQuery(1,(rs, err) =&gt; </span><br><span class="line">    &#123;</span><br><span class="line">        if( err != null )</span><br><span class="line">        &#123;</span><br><span class="line">          return  res.send( err );</span><br><span class="line">        &#125;</span><br><span class="line">       res.send(rs);</span><br><span class="line">    &#125;,</span><br><span class="line">    decodeURI(req.params.sqlstr).replace(/\+/g,&apos; &apos;)</span><br><span class="line">	);</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">app.listen(3000, () =&gt; console.log(&apos;Example app listening on port 3000!&apos;))</span><br></pre></td></tr></table></figure>
+<h2 id="网页端代码"><a href="#网页端代码" class="headerlink" title="网页端代码"></a>网页端代码</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br></pre></td><td class="code"><pre><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;meta http-equiv=&quot;content-type&quot; content=&quot;text/html;charset=utf-8&quot;&gt;</span><br><span class="line">    &lt;title&gt;&lt;/title&gt;</span><br><span class="line">    &lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;jquery-easyui-1.5/themes/gray/easyui.css&quot;&gt;</span><br><span class="line">    &lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;jquery-easyui-1.5/themes/icon.css&quot;&gt;</span><br><span class="line">    &lt;script type=&quot;text/javascript&quot; src=&quot;jquery-easyui-1.5/jquery.min.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">    &lt;script type=&quot;text/javascript&quot; src=&quot;jquery-easyui-1.5/jquery.easyui.min.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">    &lt;script type=&quot;text/javascript&quot; src=&quot;jquery-easyui-1.5/locale/easyui-lang-zh_CN.js&quot;&gt;&lt;/script&gt;</span><br><span class="line"></span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body style=&quot;padding:0px;margin:0px&quot;&gt;</span><br><span class="line"> </span><br><span class="line">&lt;table id=&quot;dg&quot; style=&quot;width:100%;&quot; data-options=&quot;&quot;&gt;&lt;/table&gt;</span><br><span class="line"> </span><br><span class="line">&lt;div id=&quot;toolbar&quot;&gt;</span><br><span class="line">    &lt;table style=&apos;width:100%&apos;&gt;</span><br><span class="line">        &lt;div id=&quot;toolbar&quot;&gt;</span><br><span class="line"> </span><br><span class="line">            &lt;form &gt;</span><br><span class="line">                &lt;div&gt;数据源:&lt;select name=&quot;type&quot;&gt;</span><br><span class="line">                        &lt;option value=&quot;mysqldb&quot; selected=&quot;selected&quot;&gt;mysqldb&lt;/option&gt;</span><br><span class="line">                        &lt;option value=&quot;1&quot;&gt;ORACLE&lt;/option&gt;</span><br><span class="line">                    &lt;/select&gt;</span><br><span class="line">                数据库名:&lt;input type=&quot;text&quot; name=&quot;db_name&quot; class=&quot;easyui-validatebox&quot; required=&quot;true&quot; placeholder=&quot;DATABASE&quot; value=&quot;dqmm&quot; id=&quot;db_name&quot; /&gt;&lt;/div&gt;</span><br><span class="line">                &lt;div&quot;&gt;</span><br><span class="line">                    &lt;di&gt;SQL语句:&lt;/div&gt;&lt;textarea id=&quot;tt&quot; name=&quot;sqlstr&quot; rows=&quot;10&quot; cols=&quot;100&quot; &gt;&lt;/textarea&gt;</span><br><span class="line">                &lt;/div&gt;</span><br><span class="line"> </span><br><span class="line">            &lt;/form&gt;</span><br><span class="line">            &lt;div&gt;</span><br><span class="line">            	  &lt;button type=&quot;button&quot; onclick=&quot;select_clear();&quot; class=&quot;easyui-linkbutton&quot; iconCls=&quot;icon-undo&quot; &gt;清除SQL&lt;/button&gt;</span><br><span class="line">            	  &lt;button type=&quot;button&quot; onclick=&quot;$(&apos;#dg&apos;).datagrid(&apos;clearSelections&apos;);&quot; class=&quot;easyui-linkbutton&quot; iconCls=&quot;icon-clear&quot; &gt;取消选中&lt;/button&gt;</span><br><span class="line">                &lt;button type=&quot;button&quot; onclick=&quot;datagrid_load();&quot; class=&quot;easyui-linkbutton&quot; iconCls=&quot;icon-search&quot; &gt;执行查询&lt;/button&gt;</span><br><span class="line">            &lt;/div&gt;</span><br><span class="line">        &lt;/div&gt;</span><br><span class="line">    &lt;/table&gt;</span><br><span class="line"> 	&lt;div id=&quot;dd&quot; class=&quot;easyui-dialog&quot; style=&quot;padding:5px;width:400px;height:200px;&quot;</span><br><span class="line">			title=&quot;提示&quot; iconCls=&quot;icon-ok&quot;</span><br><span class="line">			buttons=&quot;#dlg-buttons&quot;&gt;</span><br><span class="line">		输入SQL</span><br><span class="line">	&lt;/div&gt;</span><br><span class="line">	&lt;div id=&quot;dlg-buttons&quot;&gt;</span><br><span class="line">		&lt;a href=&quot;#&quot; class=&quot;easyui-linkbutton&quot; iconCls=&quot;icon-ok&quot; onclick=&quot;javascript:$(&apos;#dd&apos;).dialog(&apos;close&apos;)&quot;&gt;Ok&lt;/a&gt;</span><br><span class="line">		&lt;a href=&quot;#&quot; class=&quot;easyui-linkbutton&quot; iconCls=&quot;icon-cancel&quot; onclick=&quot;javascript:$(&apos;#dd&apos;).dialog(&apos;close&apos;)&quot;&gt;Cancel&lt;/a&gt;</span><br><span class="line">	&lt;/div&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line">&lt;script type=&quot;text/javascript&quot;&gt;</span><br><span class="line">    //动态展示列和数据</span><br><span class="line">    var datagrid_load = function () &#123;</span><br><span class="line">        var columns = new Array();//定义列数组</span><br><span class="line">        var ser = encodeURI($(&apos;form&apos;).serialize().replace(/(&amp;)/g,&apos;\/&apos;).replace(/(=)/g,&apos;\/&apos;));//参数需要跟下面保持一致</span><br><span class="line">     	  if ($(&quot;textarea[name=&apos;sqlstr&apos;]&quot;).val() == null || $(&quot;textarea[name=&apos;sqlstr&apos;]&quot;).val() == &apos;&apos;) &#123;</span><br><span class="line">    	  	ser = ser + &quot;select 1 from dual&quot;;</span><br><span class="line">    	  	$(&apos;#dd&apos;).dialog(&apos;open&apos;);</span><br><span class="line">    	  &#125;</span><br><span class="line">        $.getJSON(&apos;sql/&apos;+ser, null, function (result) &#123;//通过方法获得后台数据，该方法不唯一。</span><br><span class="line">            /*var column = &#123;</span><br><span class="line">                field: &apos;field&apos;, title: &apos;不变的&apos;, width: 100, sortable: true, editor: &apos;textReadonly&apos;,</span><br><span class="line">            &#125;</span><br><span class="line">            columns.push(column);//将固定写死的列，存入列数组中*/</span><br><span class="line">            let rslt = &#123;name: name&#125;;</span><br><span class="line">            let rsay = [];</span><br><span class="line">            if (Array.isArray(result)) &#123;</span><br><span class="line">            	rslt = result[0];</span><br><span class="line">            	rsay = result;</span><br><span class="line">            &#125; else &#123;</span><br><span class="line">            	rslt = result;</span><br><span class="line">            	rsay.push(result);</span><br><span class="line">            &#125;</span><br><span class="line">            for (var key in rslt) &#123;//遍历获得的后台数据，这是需要动态显示的表头数据源</span><br><span class="line">                var column1 = &#123;</span><br><span class="line">                    field: key, title: key , width: 70, sortable: true, editor: &#123;</span><br><span class="line">                        type: &apos;numberbox&apos;,</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;// field字段和title值都是根据后台的数据来赋值</span><br><span class="line">                columns.push(column1);//将需要动态显示的列，存入列数组中</span><br><span class="line">            &#125;</span><br><span class="line">            grid = $(&apos;#dg&apos;).datagrid(&#123; loadFilter: pagerFilter &#125;).datagrid(&#123;   //定位到Table标签，Table标签的ID是grid</span><br><span class="line">            //url: &apos;sql/&apos;+ser,   //指向后台的Action来获取当前菜单的信息的Json格式的数据</span><br><span class="line">            data: rsay,</span><br><span class="line">            title: &apos;sql查询&apos;,</span><br><span class="line">            iconCls: &apos;icon-view&apos;,</span><br><span class="line">//                height: 650,</span><br><span class="line">//                width: &apos;100%&apos;,</span><br><span class="line">            fit: true,</span><br><span class="line">            idField: &apos;ID&apos;,</span><br><span class="line">            method: &apos;get&apos;,</span><br><span class="line">            toolbar: &apos;#toolbar&apos;,</span><br><span class="line">            pageSize: 50,</span><br><span class="line">            pagination: true,</span><br><span class="line">            rownumbers: true,</span><br><span class="line">            fitColumns: false,    //横向滚动条</span><br><span class="line">            columns: [</span><br><span class="line">                columns,//通过js动态生成，这是关键。</span><br><span class="line">            ],</span><br><span class="line">        &#125;);</span><br><span class="line">        &#125;);</span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line">    function initTable(columns) &#123;</span><br><span class="line">//    	  var ser = encodeURI($(&apos;form&apos;).serialize().replace(/(&amp;)/g,&apos;\/&apos;).replace(/(=)/g,&apos;\/&apos;));//参数需要跟下面保持一致</span><br><span class="line">//    	  if ($(&quot;textarea[name=&apos;sqlstr&apos;]&quot;).val() == null || $(&quot;textarea[name=&apos;sqlstr&apos;]&quot;).val() == &apos;&apos;) &#123;</span><br><span class="line">//    	  	ser = ser + &quot;select 1 from dual&quot;;</span><br><span class="line">//    	  &#125;</span><br><span class="line">        grid = $(&apos;#dg&apos;).datagrid(&#123;   //定位到Table标签，Table标签的ID是grid</span><br><span class="line">           // url: &apos;sql/&apos;+ser,   //指向后台的Action来获取当前菜单的信息的Json格式的数据</span><br><span class="line">            title: &apos;sql查询&apos;,</span><br><span class="line">            iconCls: &apos;icon-view&apos;,</span><br><span class="line">//                height: 650,</span><br><span class="line">//                width: &apos;100%&apos;,</span><br><span class="line">            fit: true,</span><br><span class="line">            idField: &apos;ID&apos;,</span><br><span class="line">            method: &apos;get&apos;,</span><br><span class="line">            toolbar: &apos;#toolbar&apos;,</span><br><span class="line">            rownumbers: true,</span><br><span class="line">            fitColumns: false,    //横向滚动条</span><br><span class="line">            columns: [</span><br><span class="line">                columns,//通过js动态生成，这是关键。</span><br><span class="line">            ],</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;;</span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line">    initTable();</span><br><span class="line">    function select_clear() &#123;</span><br><span class="line">        $(&apos;#tt&apos;).val(&apos;&apos;);</span><br><span class="line">     &#125;</span><br><span class="line">    function pagerFilter(data) &#123;  </span><br><span class="line">        if (typeof data.length == &apos;number&apos; &amp;&amp; typeof data.splice == &apos;function&apos;) &#123;   // is array  </span><br><span class="line">            data = &#123;  </span><br><span class="line">                total: data.length,  </span><br><span class="line">                rows: data  </span><br><span class="line">            &#125;  </span><br><span class="line">        &#125;  </span><br><span class="line">        var dg = $(this);  </span><br><span class="line">        var opts = dg.datagrid(&apos;options&apos;);  </span><br><span class="line">        var pager = dg.datagrid(&apos;getPager&apos;);  </span><br><span class="line">        pager.pagination(&#123;  </span><br><span class="line">            onSelectPage: function (pageNum, pageSize) &#123;  </span><br><span class="line">                opts.pageNumber = pageNum;  </span><br><span class="line">                opts.pageSize = pageSize;  </span><br><span class="line">                pager.pagination(&apos;refresh&apos;, &#123;  </span><br><span class="line">                    pageNumber: pageNum,  </span><br><span class="line">                    pageSize: pageSize  </span><br><span class="line">                &#125;);  </span><br><span class="line">                dg.datagrid(&apos;loadData&apos;, data);  </span><br><span class="line">            &#125;  </span><br><span class="line">        &#125;);  </span><br><span class="line">        if (!data.originalRows) &#123;  </span><br><span class="line">            data.originalRows = (data.rows);  </span><br><span class="line">        &#125;  </span><br><span class="line">        var start = (opts.pageNumber - 1) * parseInt(opts.pageSize);  </span><br><span class="line">        var end = start + parseInt(opts.pageSize);  </span><br><span class="line">        data.rows = (data.originalRows.slice(start, end));  </span><br><span class="line">       // console.log(data);</span><br><span class="line">        return data;  </span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">&lt;/script&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+
+    </div>
+    <p class="post-meta">
+        <span class="post-cat">分类：
+            <a class="cat-link" href="/categories/nodejs/">nodejs</a>
+        </span>
+        <span class="post-tags">
+            标签：
+            
+    
+        <a href="/tags/esayui/" title="esayui">esayui</a>
+    
+
+        </span>
+    </p>
+</article>
+<div class="article-share clearfix text-center">
+    <div class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more"></a><a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a><a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a><a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网"></a><a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a></div>
+    <script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"1","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+</div>
+
+<!-- 上一篇/下一篇 -->
+
+<div class="article-nav clearfix">
+    
+    <span class="prev fl">
+        上一篇<br >
+        <a href="/2018/12/08/datagrid 右键菜单复制/">
+            
+                datagrid 右键菜单复制
+            
+        </a>
+    </span>
+    
+
+    
+    <span class="next fr">
+        下一篇<br >
+        <a href="/2018/12/06/express 安装和使用/">
+            
+                express安装使用
+            
+        </a>
+    </span>
+    
+</div>
+
+<!-- 文章评论 -->
+
+    <div id="comments" class="comments cloud-tie-wrapper"></div>
+    <script>
+    var cloudTieConfig = {
+      url: document.location.href, 
+      sourceId: "esayui express实现web数据查询功能",
+      productKey: "c06bb9930e6f4b38a9997cb9bd17aba5",
+      target: "comments"
+    };
+    var yunManualLoad = true;
+    Tie.loader("aHR0cHM6Ly9hcGkuZ2VudGllLjE2My5jb20vcGMvbGl2ZXNjcmlwdC5odG1s", true);
+    </script>
+
+            </div>
+
+        </section>
+        <!-- 侧栏部分 -->
+<aside class="sidebar">
+    <section class="widget">
+        <h3 class="widget-hd"><strong>文章分类</strong></h3>
+        <!-- 文章分类 -->
+<ul class="widget-bd">
+    
+    <li>
+        <a href="/categories/github/">github</a>
+        <span class="badge">(1)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/calcite/">calcite</a>
+        <span class="badge">(1)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/数据理论/">数据理论</a>
+        <span class="badge">(2)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/ETL/">ETL</a>
+        <span class="badge">(1)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/元数据/">元数据</a>
+        <span class="badge">(1)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/nodejs/">nodejs</a>
+        <span class="badge">(5)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/开源/">开源</a>
+        <span class="badge">(2)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/tool/">tool</a>
+        <span class="badge">(1)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/Oracle/">Oracle</a>
+        <span class="badge">(1)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/perl/">perl</a>
+        <span class="badge">(1)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/Web技术/">Web技术</a>
+        <span class="badge">(1)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/数据治理/">数据治理</a>
+        <span class="badge">(1)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/本体论/">本体论</a>
+        <span class="badge">(1)</span>
+    </li>
+    
+</ul>
+    </section>
+
+    
+    <section class="widget">
+        <h3 class="widget-hd"><strong>热门标签</strong></h3>
+        <!-- 文章标签 -->
+<div class="widget-bd tag-wrap">
+  
+    <a class="tag-item" href="/tags/其他/" title="其他">其他 (3)</a>
+  
+    <a class="tag-item" href="/tags/常用/" title="常用">常用 (2)</a>
+  
+    <a class="tag-item" href="/tags/ETL/" title="ETL">ETL (1)</a>
+  
+    <a class="tag-item" href="/tags/调度/" title="调度">调度 (1)</a>
+  
+    <a class="tag-item" href="/tags/元数据交换/" title="元数据交换">元数据交换 (1)</a>
+  
+    <a class="tag-item" href="/tags/js/" title="js">js (3)</a>
+  
+    <a class="tag-item" href="/tags/esayui/" title="esayui">esayui (2)</a>
+  
+    <a class="tag-item" href="/tags/工具/" title="工具">工具 (1)</a>
+  
+    <a class="tag-item" href="/tags/drill/" title="drill">drill (1)</a>
+  
+    <a class="tag-item" href="/tags/SQL/" title="SQL">SQL (1)</a>
+  
+    <a class="tag-item" href="/tags/理论/" title="理论">理论 (3)</a>
+  
+</div>
+    </section>
+    
+
+    
+
+    
+    <!-- 友情链接 -->
+    <section class="widget">
+        <h3 class="widget-hd"><strong>友情链接</strong></h3>
+        <!-- 文章分类 -->
+<ul class="widget-bd">
+    
+        <li>
+            <a href="http://www.idataskys.com/" target="_blank" title="数据挖掘博客">Miller博客</a>
+        </li>
+    
+</ul>
+    </section>
+    
+</aside>
+<!-- / 侧栏部分 -->
+    </div>
+
+    <!-- 博客底部 -->
+    <footer class="footer">
+    &copy;
+    
+        2016-2023
+    
+
+    <a href="/">datacl.top Loves You</a>
+    <br/>
+    <sapn>备案号： </span><a href="https://beian.miit.gov.cn">蜀ICP备17003326号-1</a>
+</footer>
+<div class="back-to-top" id="JELON__backToTop" title="返回顶部">返回顶部</div>
+<!-- 添加百度自动推送 -->
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+    <!--博客js脚本 -->
+    <!-- 这里放网站js脚本 -->
+<script src="/js/main.js"></script>
+</body>
+</html>

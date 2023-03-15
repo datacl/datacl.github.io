@@ -1,0 +1,374 @@
+<!doctype html>
+<html lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=11,IE=10,IE=9,IE=8">
+    <meta name="baidu-site-verification" content="dIcXMeY8Ya">
+    
+    <title>The Java™ Metadata Interface JMI | 数据酷</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+    <meta name="keywords" content="数据库, 数据仓库, 数据分析, 数据挖掘, 数据整合">
+    <meta name="description" content="数据科学">
+
+    
+    <link rel="alternative" href="/atom.xml" title="数据酷" type="application/atom+xml">
+    
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    
+    <link rel="stylesheet" href="/css/style.css">
+    <!--[if lt IE 9]>
+    <script src="/js/html5.js"></script>
+    <![endif]-->
+    
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "//hm.baidu.com/hm.js?fd459238242776d173cdc64918fb32f2";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+
+    
+    <script>var yunModuleEnv = true;</script>
+    <script src="https://img1.cache.netease.com/f2e/tie/yun/sdk/loader.js"></script>
+    
+</head>
+</html>
+<body class="home">
+    <!--[if lt IE 9]>
+    <div class="browsehappy">
+        当前网页 <strong>不支持</strong>
+        你正在使用的浏览器. 为了正常的访问, 请 <a href="http://browsehappy.com/">升级你的浏览器</a>.
+    </div>
+    <![endif]-->
+
+    <!-- 博客头部 -->
+    <header class="header">
+    <section class="container header-main">
+        <div class="logo">
+            <a href="/">
+                <div class="cover">
+                    <span class="name">数据酷</span>
+                    <span class="description">工欲善其事必先利其器</span>
+                </div>
+            </a>
+        </div>
+        <div class="dropnav icon-paragraph-justify" id="JELON__btnDropNav"></div>
+        <ul class="menu hidden" id="JELON__menu">
+            
+            <li rel="/2018/05/31/JMI/index.html" class="item ">
+                <a href="/" title="首页" class="icon-home">&nbsp;首页</a>
+            </li>
+            
+            <li rel="/2018/05/31/JMI/index.html" class="item ">
+                <a href="/comment/" title="留言" class="icon-comment">&nbsp;留言</a>
+            </li>
+            
+        </ul>
+        <div class="profile clearfix">
+            <div class="feeds fl">
+                
+                
+                <p class="links">
+                    
+                </p>
+                <p class="sns">
+                    
+                    <a href="javascript: void(0);" class="wechat">
+                        <b>■</b>
+                        公众号
+                        <span class="popover">
+                            <img src="/img/wechat_mp.jpg" width="120" height="120" alt="我的微信订阅号">
+                            <i class="arrow"></i>
+                        </span>
+                    </a>
+                </p>
+                
+            </div>
+            <div class="avatar fr">
+                <img src="/img/jelon.jpg" alt="avatar" title="Datacl" >
+            </div>
+        </div>
+    </section>
+</header>
+
+
+    <!-- 博客正文 -->
+    <div class="container body clearfix">
+        <section class="content">
+            <div class="content-main widget">
+                <!-- 文章页 -->
+<!-- 文章 -->
+<article class="post article">
+    <header class="text-center">
+        <h3 class="post-title"><span>The Java™ Metadata Interface JMI</span></h3>
+    </header>
+    <p class="post-meta text-center">
+        杨金坤 发表于
+        <time datetime="2018-05-30T16:00:00.000Z">2018-05-31</time>
+    </p>
+    <div class="post-content">
+        <h1 id="The-Java™-Metadata-Interface-JMI"><a href="#The-Java™-Metadata-Interface-JMI" class="headerlink" title="The Java™ Metadata Interface JMI"></a>The Java™ Metadata Interface JMI</h1><p>JMI 规范定义了一个动态的，平台无关的基础架构，该架构支持创建、存储、接入、发现和交换元数据。JMI基与Object Management Group (OMG)的Meta Object Facility (MOF) 规范。使用JMI，应用和工具可以根据服从MOF和UML规范的模型自动生成java接口。</p>
+<p>JMI包含三个自包：</p>
+<ul>
+<li>javax.jmi.model 模型</li>
+<li>javax.jmi.reflect 反射</li>
+<li>javax.jmi.xmi 交换</li>
+</ul>
+<p>JMI的主要面向的如下软件的厂商：</p>
+<ul>
+<li>Metadata based solutions 元数据解决方案</li>
+<li>Data warehouse products 数据仓库产品</li>
+<li>Software integration platforms 软件集成平台</li>
+<li>Software development tools 软件开发工具</li>
+</ul>
+<h2 id="MOF4层架构"><a href="#MOF4层架构" class="headerlink" title="MOF4层架构"></a>MOF4层架构</h2><p><img src="https://note.youdao.com/yws/api/personal/file/53200CA37A2B4730AD9568C31D258368?method=download&amp;shareKey=a431b909f44a32514a6994cf24c8c033" alt="image"></p>
+<ul>
+<li>meta-metamodel-元-元模型 (M3)</li>
+<li>metamodels-元模型 (M2)</li>
+<li>models-模型和元数据 (M1)</li>
+<li>information-信息和数据(M0)</li>
+</ul>
+<p>M3 -定义-&gt; M2 -定义-&gt; M1 -定义-&gt; M0</p>
+<p>MOF定义了一系列反射API。与JAVA反射类似，MOF提供的接口可以访问内部复杂信息。</p>
+<p>JMI简介</p>
+<p>JMI是对MOF的java语法表示，任何系统提供对JMI的结构实现提供JMI服务。</p>
+<p>JMI支持一下J2EE场景：<br>一个可以用通用java对象访问元数据的元数据平台。<br>一个java工具和应用的集成和互操作平台。<br>集成OMG的建模和元数据架构。</p>
+<p><strong>数据仓库场景</strong></p>
+<p><img src="https://note.youdao.com/yws/api/personal/file/9AD6A454C3FD41E88BA3E4E18080325C?method=download&amp;shareKey=981f0c9792098cf822aaf29d2d1e8ba3" alt="image"></p>
+<p>数据仓库应用场景中，需要面临各种多种多样的内部互操作，通常问题表现出缺乏通用的元数据基础设施。数据仓库处理场景中，需要处理各种不同的数据源和数据格式或数据库。</p>
+<h2 id="MOF-Reflective-Package"><a href="#MOF-Reflective-Package" class="headerlink" title="MOF Reflective Package"></a>MOF Reflective Package</h2><p>提供包含如下功能的接口：<br>新建、更新、接入、导航和调用类的代理对象。<br>查询、更新对象间的关联关系。<br>导航MOF包的结构。</p>
+<p>除此之外还有：<br>查找一个对象的元模型<br>查找一个对象的容器和包<br>测试对象身份ID<br>删除对象</p>
+<p><a href="https://docs.oracle.com/cd/E17802_01/products/products/jmi/jmi-1_0-fr-doc/overview-summary.html" target="_blank" rel="noopener">oracle-JMI</a></p>
+<p><a href="https://netbeans.org/download/5_5_1/javadoc/org-netbeans-api-mdr/architecture-summary.html" target="_blank" rel="noopener">netbean-JMI</a></p>
+<p><a href="https://github.com/apache/incubator-netbeans" target="_blank" rel="noopener">Ghub-netbeans</a></p>
+<p><a href="http://kickjava.com/src/org.netbeans.mdr.index.htm" target="_blank" rel="noopener">mdr-doc</a></p>
+
+    </div>
+    <p class="post-meta">
+        <span class="post-cat">分类：
+            <a class="cat-link" href="/categories/元数据/">元数据</a>
+        </span>
+        <span class="post-tags">
+            标签：
+            
+    
+        <a href="/tags/元数据交换/" title="元数据交换">元数据交换</a>
+    
+
+        </span>
+    </p>
+</article>
+<div class="article-share clearfix text-center">
+    <div class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more"></a><a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a><a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a><a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网"></a><a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a></div>
+    <script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"1","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+</div>
+
+<!-- 上一篇/下一篇 -->
+
+<div class="article-nav clearfix">
+    
+    <span class="prev fl">
+        上一篇<br >
+        <a href="/2018/11/01/Node-anywhere安装和使用/">
+            
+                Node-anywhere 安装和使用
+            
+        </a>
+    </span>
+    
+
+    
+    <span class="next fr">
+        下一篇<br >
+        <a href="/2017/12/27/ETL调度/">
+            
+                ETL调度，调度的相关术语
+            
+        </a>
+    </span>
+    
+</div>
+
+<!-- 文章评论 -->
+
+    <div id="comments" class="comments cloud-tie-wrapper"></div>
+    <script>
+    var cloudTieConfig = {
+      url: document.location.href, 
+      sourceId: "JMI",
+      productKey: "c06bb9930e6f4b38a9997cb9bd17aba5",
+      target: "comments"
+    };
+    var yunManualLoad = true;
+    Tie.loader("aHR0cHM6Ly9hcGkuZ2VudGllLjE2My5jb20vcGMvbGl2ZXNjcmlwdC5odG1s", true);
+    </script>
+
+            </div>
+
+        </section>
+        <!-- 侧栏部分 -->
+<aside class="sidebar">
+    <section class="widget">
+        <h3 class="widget-hd"><strong>文章分类</strong></h3>
+        <!-- 文章分类 -->
+<ul class="widget-bd">
+    
+    <li>
+        <a href="/categories/github/">github</a>
+        <span class="badge">(1)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/calcite/">calcite</a>
+        <span class="badge">(1)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/数据理论/">数据理论</a>
+        <span class="badge">(2)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/ETL/">ETL</a>
+        <span class="badge">(1)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/元数据/">元数据</a>
+        <span class="badge">(1)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/nodejs/">nodejs</a>
+        <span class="badge">(5)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/开源/">开源</a>
+        <span class="badge">(2)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/tool/">tool</a>
+        <span class="badge">(1)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/Oracle/">Oracle</a>
+        <span class="badge">(1)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/perl/">perl</a>
+        <span class="badge">(1)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/Web技术/">Web技术</a>
+        <span class="badge">(1)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/数据治理/">数据治理</a>
+        <span class="badge">(1)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/本体论/">本体论</a>
+        <span class="badge">(1)</span>
+    </li>
+    
+</ul>
+    </section>
+
+    
+    <section class="widget">
+        <h3 class="widget-hd"><strong>热门标签</strong></h3>
+        <!-- 文章标签 -->
+<div class="widget-bd tag-wrap">
+  
+    <a class="tag-item" href="/tags/其他/" title="其他">其他 (3)</a>
+  
+    <a class="tag-item" href="/tags/常用/" title="常用">常用 (2)</a>
+  
+    <a class="tag-item" href="/tags/ETL/" title="ETL">ETL (1)</a>
+  
+    <a class="tag-item" href="/tags/调度/" title="调度">调度 (1)</a>
+  
+    <a class="tag-item" href="/tags/元数据交换/" title="元数据交换">元数据交换 (1)</a>
+  
+    <a class="tag-item" href="/tags/js/" title="js">js (3)</a>
+  
+    <a class="tag-item" href="/tags/esayui/" title="esayui">esayui (2)</a>
+  
+    <a class="tag-item" href="/tags/工具/" title="工具">工具 (1)</a>
+  
+    <a class="tag-item" href="/tags/drill/" title="drill">drill (1)</a>
+  
+    <a class="tag-item" href="/tags/SQL/" title="SQL">SQL (1)</a>
+  
+    <a class="tag-item" href="/tags/理论/" title="理论">理论 (3)</a>
+  
+</div>
+    </section>
+    
+
+    
+
+    
+    <!-- 友情链接 -->
+    <section class="widget">
+        <h3 class="widget-hd"><strong>友情链接</strong></h3>
+        <!-- 文章分类 -->
+<ul class="widget-bd">
+    
+        <li>
+            <a href="http://www.idataskys.com/" target="_blank" title="数据挖掘博客">Miller博客</a>
+        </li>
+    
+</ul>
+    </section>
+    
+</aside>
+<!-- / 侧栏部分 -->
+    </div>
+
+    <!-- 博客底部 -->
+    <footer class="footer">
+    &copy;
+    
+        2016-2023
+    
+
+    <a href="/">datacl.top Loves You</a>
+    <br/>
+    <sapn>备案号： </span><a href="https://beian.miit.gov.cn">蜀ICP备17003326号-1</a>
+</footer>
+<div class="back-to-top" id="JELON__backToTop" title="返回顶部">返回顶部</div>
+<!-- 添加百度自动推送 -->
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+    <!--博客js脚本 -->
+    <!-- 这里放网站js脚本 -->
+<script src="/js/main.js"></script>
+</body>
+</html>

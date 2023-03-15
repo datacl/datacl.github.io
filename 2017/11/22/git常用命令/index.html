@@ -1,0 +1,417 @@
+<!doctype html>
+<html lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=11,IE=10,IE=9,IE=8">
+    <meta name="baidu-site-verification" content="dIcXMeY8Ya">
+    
+    <title>Git常用命令 | 数据酷</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+    <meta name="keywords" content="数据库, 数据仓库, 数据分析, 数据挖掘, 数据整合">
+    <meta name="description" content="数据科学">
+
+    
+    <link rel="alternative" href="/atom.xml" title="数据酷" type="application/atom+xml">
+    
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    
+    <link rel="stylesheet" href="/css/style.css">
+    <!--[if lt IE 9]>
+    <script src="/js/html5.js"></script>
+    <![endif]-->
+    
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "//hm.baidu.com/hm.js?fd459238242776d173cdc64918fb32f2";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+
+    
+    <script>var yunModuleEnv = true;</script>
+    <script src="https://img1.cache.netease.com/f2e/tie/yun/sdk/loader.js"></script>
+    
+</head>
+</html>
+<body class="home">
+    <!--[if lt IE 9]>
+    <div class="browsehappy">
+        当前网页 <strong>不支持</strong>
+        你正在使用的浏览器. 为了正常的访问, 请 <a href="http://browsehappy.com/">升级你的浏览器</a>.
+    </div>
+    <![endif]-->
+
+    <!-- 博客头部 -->
+    <header class="header">
+    <section class="container header-main">
+        <div class="logo">
+            <a href="/">
+                <div class="cover">
+                    <span class="name">数据酷</span>
+                    <span class="description">工欲善其事必先利其器</span>
+                </div>
+            </a>
+        </div>
+        <div class="dropnav icon-paragraph-justify" id="JELON__btnDropNav"></div>
+        <ul class="menu hidden" id="JELON__menu">
+            
+            <li rel="/2017/11/22/git常用命令/index.html" class="item ">
+                <a href="/" title="首页" class="icon-home">&nbsp;首页</a>
+            </li>
+            
+            <li rel="/2017/11/22/git常用命令/index.html" class="item ">
+                <a href="/comment/" title="留言" class="icon-comment">&nbsp;留言</a>
+            </li>
+            
+        </ul>
+        <div class="profile clearfix">
+            <div class="feeds fl">
+                
+                
+                <p class="links">
+                    
+                </p>
+                <p class="sns">
+                    
+                    <a href="javascript: void(0);" class="wechat">
+                        <b>■</b>
+                        公众号
+                        <span class="popover">
+                            <img src="/img/wechat_mp.jpg" width="120" height="120" alt="我的微信订阅号">
+                            <i class="arrow"></i>
+                        </span>
+                    </a>
+                </p>
+                
+            </div>
+            <div class="avatar fr">
+                <img src="/img/jelon.jpg" alt="avatar" title="Datacl" >
+            </div>
+        </div>
+    </section>
+</header>
+
+
+    <!-- 博客正文 -->
+    <div class="container body clearfix">
+        <section class="content">
+            <div class="content-main widget">
+                <!-- 文章页 -->
+<!-- 文章 -->
+<article class="post article">
+    <header class="text-center">
+        <h3 class="post-title"><span>Git常用命令</span></h3>
+    </header>
+    <p class="post-meta text-center">
+        杨金坤 发表于
+        <time datetime="2017-11-21T16:00:00.000Z">2017-11-22</time>
+    </p>
+    <div class="post-content">
+        <h1 id="Git常用命令"><a href="#Git常用命令" class="headerlink" title="Git常用命令"></a>Git常用命令</h1><h2 id="查看、添加、提交、删除、找回，重置修改文件"><a href="#查看、添加、提交、删除、找回，重置修改文件" class="headerlink" title="查看、添加、提交、删除、找回，重置修改文件"></a>查看、添加、提交、删除、找回，重置修改文件</h2><p>git help <command> # 显示command的help</p>
+<p>git show # 显示某次提交的内容 git show $id</p>
+<p>git co – <file> # 抛弃工作区修改</file></p>
+<p>git co . # 抛弃工作区修改</p>
+<p>git add <file> # 将工作文件修改提交到本地暂存区</file></p>
+<p>git add . # 将所有修改过的工作文件提交暂存区</p>
+<p>git rm <file> # 从版本库中删除文件</file></p>
+<p>git rm <file> –cached # 从版本库中删除文件，但不删除文件</file></p>
+<p>git reset <file> # 从暂存区恢复到工作文件</file></p>
+<p>git reset – . # 从暂存区恢复到工作文件</p>
+<p>git reset –hard # 恢复最近一次提交过的状态，即放弃上次提交后的所有本次修改</p>
+<p>git ci <file> git ci . git ci -a # 将git add, git rm和git ci等操作都合并在一起做　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　git ci -am “some comments”</file></p>
+<p>git ci –amend # 修改最后一次提交记录</p>
+<p>git revert &lt;$id&gt; # 恢复某次提交的状态，恢复动作本身也创建次提交对象</p>
+<p>git revert HEAD # 恢复最后一次提交的状态</p>
+<h2 id="查看文件diff"><a href="#查看文件diff" class="headerlink" title="查看文件diff"></a>查看文件diff</h2><p>git diff <file> # 比较当前文件和暂存区文件差异 git diff</file></p>
+<p>git diff &lt;$id1&gt; &lt;$id2&gt; # 比较两次提交之间的差异</p>
+<p>git diff <branch1>..<branch2> # 在两个分支之间比较</branch2></branch1></p>
+<p>git diff –staged # 比较暂存区和版本库差异</p>
+<p>git diff –cached # 比较暂存区和版本库差异</p>
+<p>git diff –stat # 仅仅比较统计信息</p>
+<h2 id="查看提交记录"><a href="#查看提交记录" class="headerlink" title="查看提交记录"></a>查看提交记录</h2><p>git log git log <file> # 查看该文件每次提交记录</file></p>
+<p>git log -p <file> # 查看每次详细修改内容的diff</file></p>
+<p>git log -p -2 # 查看最近两次详细修改内容的diff</p>
+<p>git log –stat #查看提交统计信息</p>
+<p>tig</p>
+<p>Mac上可以使用tig代替diff和log，brew install tig</p>
+<h2 id="Git-本地分支管理"><a href="#Git-本地分支管理" class="headerlink" title="Git 本地分支管理"></a>Git 本地分支管理</h2><p>查看、切换、创建和删除分支</p>
+<p>git br -r # 查看远程分支</p>
+<p>git br &lt;new_branch&gt; # 创建新的分支</p>
+<p>git br -v # 查看各个分支最后提交信息</p>
+<p>git br –merged # 查看已经被合并到当前分支的分支</p>
+<p>git br –no-merged # 查看尚未被合并到当前分支的分支</p>
+<p>git co <branch> # 切换到某个分支</branch></p>
+<p>git co -b &lt;new_branch&gt; # 创建新的分支，并且切换过去</p>
+<p>git co -b &lt;new_branch&gt; <branch> # 基于branch创建新的new_branch</branch></p>
+<p>git co $id # 把某次历史提交记录checkout出来，但无分支信息，切换到其他分支会自动删除</p>
+<p>git co $id -b &lt;new_branch&gt; # 把某次历史提交记录checkout出来，创建成一个分支</p>
+<p>git br -d <branch> # 删除某个分支</branch></p>
+<p>git br -D <branch> # 强制删除某个分支 (未被合并的分支被删除的时候需要强制)</branch></p>
+<h2 id="分支合并和rebase"><a href="#分支合并和rebase" class="headerlink" title="分支合并和rebase"></a>分支合并和rebase</h2><p>git merge <branch> # 将branch分支合并到当前分支</branch></p>
+<p>git merge origin/master –no-ff # 不要Fast-Foward合并，这样可以生成merge提交</p>
+<p>git rebase master <branch> # 将master rebase到branch，相当于： git co <branch> &amp;&amp; git rebase master &amp;&amp; git co master &amp;&amp; git merge <branch></branch></branch></branch></p>
+<p> Git补丁管理(方便在多台机器上开发同步时用)</p>
+<p>git diff &gt; ../sync.patch # 生成补丁</p>
+<p>git apply ../sync.patch # 打补丁</p>
+<p>git apply –check ../sync.patch #测试补丁能否成功</p>
+<h2 id="Git暂存管理"><a href="#Git暂存管理" class="headerlink" title="Git暂存管理"></a>Git暂存管理</h2><p>git stash # 暂存</p>
+<p>git stash list # 列所有stash</p>
+<p>git stash apply # 恢复暂存的内容</p>
+<p>git stash drop # 删除暂存区</p>
+<h2 id="Git远程分支管理"><a href="#Git远程分支管理" class="headerlink" title="Git远程分支管理"></a>Git远程分支管理</h2><p>git pull # 抓取远程仓库所有分支更新并合并到本地</p>
+<p>git pull –no-ff # 抓取远程仓库所有分支更新并合并到本地，不要快进合并</p>
+<p>git fetch origin # 抓取远程仓库更新</p>
+<p>git merge origin/master # 将远程主分支合并到本地当前分支</p>
+<p>git co –track origin/branch # 跟踪某个远程分支创建相应的本地分支</p>
+<p>git co -b &lt;local_branch&gt; origin/&lt;remote_branch&gt; # 基于远程分支创建本地分支，功能同上</p>
+<p>git push # push所有分支</p>
+<p>git push origin master # 将本地主分支推到远程主分支</p>
+<p>git push -u origin master # 将本地主分支推到远程(如无远程主分支则创建，用于初始化远程仓库)</p>
+<p>git push origin &lt;local_branch&gt; # 创建远程分支， origin是远程仓库名</p>
+<p>git push origin &lt;local_branch&gt;:&lt;remote_branch&gt; # 创建远程分支</p>
+<p>git push origin :&lt;remote_branch&gt; #先删除本地分支(git br -d <branch>)，然后再push删除远程分支</branch></p>
+<h2 id="Git远程仓库管理"><a href="#Git远程仓库管理" class="headerlink" title="Git远程仓库管理"></a>Git远程仓库管理</h2><p>GitHub</p>
+<p>git remote -v # 查看远程服务器地址和仓库名称</p>
+<p>git remote show origin # 查看远程服务器仓库状态</p>
+<p>git remote add origin git@ github:robbin/robbin_site.git # 添加远程仓库地址</p>
+<p>git remote set-url origin git@ github.com:robbin/robbin_site.git # 设置远程仓库地址(用于修改远程仓库地址) git remote rm <repository> # 删除远程仓库</repository></p>
+<h2 id="创建远程仓库"><a href="#创建远程仓库" class="headerlink" title="创建远程仓库"></a>创建远程仓库</h2><p>git clone –bare robbin_site robbin_site.git # 用带版本的项目创建纯版本仓库</p>
+<p>scp -r my_project.git git@ git.csdn.net:~ # 将纯仓库上传到服务器上</p>
+<p>mkdir robbin_site.git &amp;&amp; cd robbin_site.git &amp;&amp; git –bare init # 在服务器创建纯仓库</p>
+<p>git remote add origin git@ github.com:robbin/robbin_site.git # 设置远程仓库地址</p>
+<p>git push -u origin master # 客户端首次提交</p>
+<p>git push -u origin develop # 首次将本地develop分支提交到远程develop分支，并且track</p>
+<p>git remote set-head origin master # 设置远程仓库的HEAD指向master分支</p>
+<p>也可以命令设置跟踪远程库和本地库</p>
+<p>git branch –set-upstream master origin/master</p>
+<p>git branch –set-upstream develop origin/develop</p>
+
+    </div>
+    <p class="post-meta">
+        <span class="post-cat">分类：
+            <a class="cat-link" href="/categories/tool/">tool</a>
+        </span>
+        <span class="post-tags">
+            标签：
+            
+    
+        <a href="/tags/常用/" title="常用">常用</a>
+    
+
+        </span>
+    </p>
+</article>
+<div class="article-share clearfix text-center">
+    <div class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more"></a><a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a><a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a><a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网"></a><a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a></div>
+    <script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"1","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+</div>
+
+<!-- 上一篇/下一篇 -->
+
+<div class="article-nav clearfix">
+    
+    <span class="prev fl">
+        上一篇<br >
+        <a href="/2017/11/22/GitHub_hexo_travis/">
+            
+                hexo github travis_ci 构建博客
+            
+        </a>
+    </span>
+    
+
+    
+    <span class="next fr">
+        下一篇<br >
+        <a href="/2017/08/04/开始/">
+            
+                开始
+            
+        </a>
+    </span>
+    
+</div>
+
+<!-- 文章评论 -->
+
+    <div id="comments" class="comments cloud-tie-wrapper"></div>
+    <script>
+    var cloudTieConfig = {
+      url: document.location.href, 
+      sourceId: "git常用命令",
+      productKey: "c06bb9930e6f4b38a9997cb9bd17aba5",
+      target: "comments"
+    };
+    var yunManualLoad = true;
+    Tie.loader("aHR0cHM6Ly9hcGkuZ2VudGllLjE2My5jb20vcGMvbGl2ZXNjcmlwdC5odG1s", true);
+    </script>
+
+            </div>
+
+        </section>
+        <!-- 侧栏部分 -->
+<aside class="sidebar">
+    <section class="widget">
+        <h3 class="widget-hd"><strong>文章分类</strong></h3>
+        <!-- 文章分类 -->
+<ul class="widget-bd">
+    
+    <li>
+        <a href="/categories/github/">github</a>
+        <span class="badge">(1)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/calcite/">calcite</a>
+        <span class="badge">(1)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/数据理论/">数据理论</a>
+        <span class="badge">(2)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/ETL/">ETL</a>
+        <span class="badge">(1)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/元数据/">元数据</a>
+        <span class="badge">(1)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/nodejs/">nodejs</a>
+        <span class="badge">(5)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/开源/">开源</a>
+        <span class="badge">(2)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/tool/">tool</a>
+        <span class="badge">(1)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/Oracle/">Oracle</a>
+        <span class="badge">(1)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/perl/">perl</a>
+        <span class="badge">(1)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/Web技术/">Web技术</a>
+        <span class="badge">(1)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/数据治理/">数据治理</a>
+        <span class="badge">(1)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/本体论/">本体论</a>
+        <span class="badge">(1)</span>
+    </li>
+    
+</ul>
+    </section>
+
+    
+    <section class="widget">
+        <h3 class="widget-hd"><strong>热门标签</strong></h3>
+        <!-- 文章标签 -->
+<div class="widget-bd tag-wrap">
+  
+    <a class="tag-item" href="/tags/其他/" title="其他">其他 (3)</a>
+  
+    <a class="tag-item" href="/tags/常用/" title="常用">常用 (2)</a>
+  
+    <a class="tag-item" href="/tags/ETL/" title="ETL">ETL (1)</a>
+  
+    <a class="tag-item" href="/tags/调度/" title="调度">调度 (1)</a>
+  
+    <a class="tag-item" href="/tags/元数据交换/" title="元数据交换">元数据交换 (1)</a>
+  
+    <a class="tag-item" href="/tags/js/" title="js">js (3)</a>
+  
+    <a class="tag-item" href="/tags/esayui/" title="esayui">esayui (2)</a>
+  
+    <a class="tag-item" href="/tags/工具/" title="工具">工具 (1)</a>
+  
+    <a class="tag-item" href="/tags/drill/" title="drill">drill (1)</a>
+  
+    <a class="tag-item" href="/tags/SQL/" title="SQL">SQL (1)</a>
+  
+    <a class="tag-item" href="/tags/理论/" title="理论">理论 (3)</a>
+  
+</div>
+    </section>
+    
+
+    
+
+    
+    <!-- 友情链接 -->
+    <section class="widget">
+        <h3 class="widget-hd"><strong>友情链接</strong></h3>
+        <!-- 文章分类 -->
+<ul class="widget-bd">
+    
+        <li>
+            <a href="http://www.idataskys.com/" target="_blank" title="数据挖掘博客">Miller博客</a>
+        </li>
+    
+</ul>
+    </section>
+    
+</aside>
+<!-- / 侧栏部分 -->
+    </div>
+
+    <!-- 博客底部 -->
+    <footer class="footer">
+    &copy;
+    
+        2016-2023
+    
+
+    <a href="/">datacl.top Loves You</a>
+    <br/>
+    <sapn>备案号： </span><a href="https://beian.miit.gov.cn">蜀ICP备17003326号-1</a>
+</footer>
+<div class="back-to-top" id="JELON__backToTop" title="返回顶部">返回顶部</div>
+<!-- 添加百度自动推送 -->
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+    <!--博客js脚本 -->
+    <!-- 这里放网站js脚本 -->
+<script src="/js/main.js"></script>
+</body>
+</html>

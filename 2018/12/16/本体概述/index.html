@@ -1,0 +1,363 @@
+<!doctype html>
+<html lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=11,IE=10,IE=9,IE=8">
+    <meta name="baidu-site-verification" content="dIcXMeY8Ya">
+    
+    <title>本体概述 | 数据酷</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+    <meta name="keywords" content="数据库, 数据仓库, 数据分析, 数据挖掘, 数据整合">
+    <meta name="description" content="数据科学">
+
+    
+    <link rel="alternative" href="/atom.xml" title="数据酷" type="application/atom+xml">
+    
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    
+    <link rel="stylesheet" href="/css/style.css">
+    <!--[if lt IE 9]>
+    <script src="/js/html5.js"></script>
+    <![endif]-->
+    
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "//hm.baidu.com/hm.js?fd459238242776d173cdc64918fb32f2";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+
+    
+    <script>var yunModuleEnv = true;</script>
+    <script src="https://img1.cache.netease.com/f2e/tie/yun/sdk/loader.js"></script>
+    
+</head>
+</html>
+<body class="home">
+    <!--[if lt IE 9]>
+    <div class="browsehappy">
+        当前网页 <strong>不支持</strong>
+        你正在使用的浏览器. 为了正常的访问, 请 <a href="http://browsehappy.com/">升级你的浏览器</a>.
+    </div>
+    <![endif]-->
+
+    <!-- 博客头部 -->
+    <header class="header">
+    <section class="container header-main">
+        <div class="logo">
+            <a href="/">
+                <div class="cover">
+                    <span class="name">数据酷</span>
+                    <span class="description">工欲善其事必先利其器</span>
+                </div>
+            </a>
+        </div>
+        <div class="dropnav icon-paragraph-justify" id="JELON__btnDropNav"></div>
+        <ul class="menu hidden" id="JELON__menu">
+            
+            <li rel="/2018/12/16/本体概述/index.html" class="item ">
+                <a href="/" title="首页" class="icon-home">&nbsp;首页</a>
+            </li>
+            
+            <li rel="/2018/12/16/本体概述/index.html" class="item ">
+                <a href="/comment/" title="留言" class="icon-comment">&nbsp;留言</a>
+            </li>
+            
+        </ul>
+        <div class="profile clearfix">
+            <div class="feeds fl">
+                
+                
+                <p class="links">
+                    
+                </p>
+                <p class="sns">
+                    
+                    <a href="javascript: void(0);" class="wechat">
+                        <b>■</b>
+                        公众号
+                        <span class="popover">
+                            <img src="/img/wechat_mp.jpg" width="120" height="120" alt="我的微信订阅号">
+                            <i class="arrow"></i>
+                        </span>
+                    </a>
+                </p>
+                
+            </div>
+            <div class="avatar fr">
+                <img src="/img/jelon.jpg" alt="avatar" title="Datacl" >
+            </div>
+        </div>
+    </section>
+</header>
+
+
+    <!-- 博客正文 -->
+    <div class="container body clearfix">
+        <section class="content">
+            <div class="content-main widget">
+                <!-- 文章页 -->
+<!-- 文章 -->
+<article class="post article">
+    <header class="text-center">
+        <h3 class="post-title"><span>本体概述</span></h3>
+    </header>
+    <p class="post-meta text-center">
+        杨金坤 发表于
+        <time datetime="2018-12-15T16:00:00.000Z">2018-12-16</time>
+    </p>
+    <div class="post-content">
+        <h1 id="本体概述"><a href="#本体概述" class="headerlink" title="本体概述"></a>本体概述</h1><h3 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h3><p> Ontology is defined as: a set of concepts and categories in a subject area or domain, showing their properties and the relationships between them.</p>
+<p> 本体的定义：客体领域的概念和分类的集合，以及表示它们的属性和之间的关系。</p>
+<p> A formal naming and definition of types, properties, and interrelationships of the entities that fundamentally exist for a particular domain.</p>
+<p> 对存在于特殊领域的客观实体的类型、属性、内部关系的正式命名和定义。</p>
+<h3 id="人脑和本体论"><a href="#人脑和本体论" class="headerlink" title="人脑和本体论"></a>人脑和本体论</h3><p>虽然对人类来说理解人脑的是怎样工作的是一件有利的事情，但人脑的存储和处理机制比我们已理解的还复杂得多。我们一天能接收成百上千的感知信息的输入，并且如果按bit来处理信息，那么大脑将超过负荷，也不能理解内容并作出有针对的应答。大脑可以过滤输入的感知信息并连续接收其他感知信息。大脑的记忆方式为有3种：</p>
+<ul>
+<li>感知记忆<br>这是记忆的第一阶段，这个阶段数据以毫秒级的灌入大脑。比如：开车时，我们一路可以看到上千个事物和声音，但我们只利用我们用来开车的部分。因为时间的限制，大部分输入信息都被忘掉了，没本记下来。</li>
+<li>短期记忆<br>基本都是因为一些临时的目的需要被记忆的信息。比如：收到同事提醒，在房间D-1482有个紧急会议。在我们起身前往会议室的的时间里，这个信息时有意义的，大脑使用短期记忆保留记录。这类信息不会存在较长的时间，但通过一些特殊情况的触发可以转化为长期记忆。</li>
+<li>长期记忆<br>这些信息可以保留数天甚至一生。比如：我们的名字、生日、社会关系、家庭地址等等。这些信息是基于客体的模式和联系的。一些非生存必须的技能可以掌握较长一段时间，如使用一个乐器，需要存储相关的技法和建立条件发射以实现长期的记忆。</li>
+</ul>
+<p>通过眼睛这个感知器官看到一个，大脑会创建一个图和检索所有与这个人相关的信息。<br><img src="https://note.youdao.com/yws/api/personal/file/CEF54AA84C904E47BE410675CA9AC601?method=download&amp;shareKey=8cccbb5e899dc58f7d4c4016f5a3be2d" alt="大脑感知过程"></p>
+<h3 id="信息科学的本体论"><a href="#信息科学的本体论" class="headerlink" title="信息科学的本体论"></a>信息科学的本体论</h3><p>电脑和大脑处理信息的基本不同之处是：电脑的输入是字符/数字，大脑的输入是事物。字符串/数字（数据）附上对应的元数据后才是一个完整的事物。</p>
+<p>如我们说北京今天早上8：00的气温为66℃，其中66只是的值，没有任务意义。当加上单位过后变得有一定含义了。当加上所有上下文（元数据）后就都表达清楚了。也就是数据-&gt;信息-&gt;知识的转化过程。</p>
+<h3 id="本体的组成"><a href="#本体的组成" class="headerlink" title="本体的组成"></a>本体的组成</h3><ul>
+<li>概念（Concepts）<br>面向对象编程中的一般事物或实体，如人，员工等等。</li>
+<li>数据槽（Slots）<br>实体的属性或特性，如生日、性别、地址等等。</li>
+<li>关系（Ralationships）<br>两个概念间的内在联系，表示为是，包含，如员工是人。</li>
+<li>实例（Instances）<br>面向对象编程中的对象，如张三是员工类的实例，它是概念的具体表现。本体通过实例表达知识。</li>
+<li>操作（Operations）<br>管理本体不同组件的所需的函数和规则。面向对象编程中是类的方法。</li>
+</ul>
+<h3 id="大数据中的本体"><a href="#大数据中的本体" class="headerlink" title="大数据中的本体"></a>大数据中的本体</h3><p>在企业增长实现数据驱动传统的方法是实体建模，并通过ETL实现数据整合。在数据库建模过程中，通过表来表示一个实体，并且这个类通过外键与其他实体关联。但是预先定义的实体是固定结构，在需要修改的时候会变得相对困难。</p>
+<p>在大数据领域，分类是在数据读取时而不是数据写入时，这使得实体的结构和建模过程变得高度灵活。即使这样，实体不能标准化，在全网范围管理数据资产依然困难。</p>
+<p>为促进网页搜索，谷歌首推知识图谱（knowledge graph）。搜索方式从关键词统计变为基于知识建模，也从字符变为了事物。知识图谱是描述真实世界的对象的一个巨大的本体。</p>
+<p>使用大数据技术减少数据建模的困难，数据更好的转变为信息和知识。不同数据源中找到关联实体，通过分类标准，概念映射，最终实现本体。</p>
+
+    </div>
+    <p class="post-meta">
+        <span class="post-cat">分类：
+            <a class="cat-link" href="/categories/本体论/">本体论</a>
+        </span>
+        <span class="post-tags">
+            标签：
+            
+    
+        <a href="/tags/理论/" title="理论">理论</a>
+    
+
+        </span>
+    </p>
+</article>
+<div class="article-share clearfix text-center">
+    <div class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more"></a><a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a><a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a><a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网"></a><a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a></div>
+    <script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"1","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+</div>
+
+<!-- 上一篇/下一篇 -->
+
+<div class="article-nav clearfix">
+    
+    <span class="prev fl">
+        上一篇<br >
+        <a href="/2018/12/16/数据质量业务规则/">
+            
+                数据质量业务规则
+            
+        </a>
+    </span>
+    
+
+    
+    <span class="next fr">
+        下一篇<br >
+        <a href="/2018/12/08/datagrid 右键菜单复制/">
+            
+                datagrid 右键菜单复制
+            
+        </a>
+    </span>
+    
+</div>
+
+<!-- 文章评论 -->
+
+    <div id="comments" class="comments cloud-tie-wrapper"></div>
+    <script>
+    var cloudTieConfig = {
+      url: document.location.href, 
+      sourceId: "本体概述",
+      productKey: "c06bb9930e6f4b38a9997cb9bd17aba5",
+      target: "comments"
+    };
+    var yunManualLoad = true;
+    Tie.loader("aHR0cHM6Ly9hcGkuZ2VudGllLjE2My5jb20vcGMvbGl2ZXNjcmlwdC5odG1s", true);
+    </script>
+
+            </div>
+
+        </section>
+        <!-- 侧栏部分 -->
+<aside class="sidebar">
+    <section class="widget">
+        <h3 class="widget-hd"><strong>文章分类</strong></h3>
+        <!-- 文章分类 -->
+<ul class="widget-bd">
+    
+    <li>
+        <a href="/categories/github/">github</a>
+        <span class="badge">(1)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/calcite/">calcite</a>
+        <span class="badge">(1)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/数据理论/">数据理论</a>
+        <span class="badge">(2)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/ETL/">ETL</a>
+        <span class="badge">(1)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/元数据/">元数据</a>
+        <span class="badge">(1)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/nodejs/">nodejs</a>
+        <span class="badge">(5)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/开源/">开源</a>
+        <span class="badge">(2)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/tool/">tool</a>
+        <span class="badge">(1)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/Oracle/">Oracle</a>
+        <span class="badge">(1)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/perl/">perl</a>
+        <span class="badge">(1)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/Web技术/">Web技术</a>
+        <span class="badge">(1)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/数据治理/">数据治理</a>
+        <span class="badge">(1)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/本体论/">本体论</a>
+        <span class="badge">(1)</span>
+    </li>
+    
+</ul>
+    </section>
+
+    
+    <section class="widget">
+        <h3 class="widget-hd"><strong>热门标签</strong></h3>
+        <!-- 文章标签 -->
+<div class="widget-bd tag-wrap">
+  
+    <a class="tag-item" href="/tags/其他/" title="其他">其他 (3)</a>
+  
+    <a class="tag-item" href="/tags/常用/" title="常用">常用 (2)</a>
+  
+    <a class="tag-item" href="/tags/ETL/" title="ETL">ETL (1)</a>
+  
+    <a class="tag-item" href="/tags/调度/" title="调度">调度 (1)</a>
+  
+    <a class="tag-item" href="/tags/元数据交换/" title="元数据交换">元数据交换 (1)</a>
+  
+    <a class="tag-item" href="/tags/js/" title="js">js (3)</a>
+  
+    <a class="tag-item" href="/tags/esayui/" title="esayui">esayui (2)</a>
+  
+    <a class="tag-item" href="/tags/工具/" title="工具">工具 (1)</a>
+  
+    <a class="tag-item" href="/tags/drill/" title="drill">drill (1)</a>
+  
+    <a class="tag-item" href="/tags/SQL/" title="SQL">SQL (1)</a>
+  
+    <a class="tag-item" href="/tags/理论/" title="理论">理论 (3)</a>
+  
+</div>
+    </section>
+    
+
+    
+
+    
+    <!-- 友情链接 -->
+    <section class="widget">
+        <h3 class="widget-hd"><strong>友情链接</strong></h3>
+        <!-- 文章分类 -->
+<ul class="widget-bd">
+    
+        <li>
+            <a href="http://www.idataskys.com/" target="_blank" title="数据挖掘博客">Miller博客</a>
+        </li>
+    
+</ul>
+    </section>
+    
+</aside>
+<!-- / 侧栏部分 -->
+    </div>
+
+    <!-- 博客底部 -->
+    <footer class="footer">
+    &copy;
+    
+        2016-2023
+    
+
+    <a href="/">datacl.top Loves You</a>
+    <br/>
+    <sapn>备案号： </span><a href="https://beian.miit.gov.cn">蜀ICP备17003326号-1</a>
+</footer>
+<div class="back-to-top" id="JELON__backToTop" title="返回顶部">返回顶部</div>
+<!-- 添加百度自动推送 -->
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+    <!--博客js脚本 -->
+    <!-- 这里放网站js脚本 -->
+<script src="/js/main.js"></script>
+</body>
+</html>

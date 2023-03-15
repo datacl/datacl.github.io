@@ -1,0 +1,371 @@
+<!doctype html>
+<html lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=11,IE=10,IE=9,IE=8">
+    <meta name="baidu-site-verification" content="dIcXMeY8Ya">
+    
+    <title>hexo github travis_ci 构建博客 | 数据酷</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+    <meta name="keywords" content="数据库, 数据仓库, 数据分析, 数据挖掘, 数据整合">
+    <meta name="description" content="数据科学">
+
+    
+    <link rel="alternative" href="/atom.xml" title="数据酷" type="application/atom+xml">
+    
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    
+    <link rel="stylesheet" href="/css/style.css">
+    <!--[if lt IE 9]>
+    <script src="/js/html5.js"></script>
+    <![endif]-->
+    
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "//hm.baidu.com/hm.js?fd459238242776d173cdc64918fb32f2";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+
+    
+    <script>var yunModuleEnv = true;</script>
+    <script src="https://img1.cache.netease.com/f2e/tie/yun/sdk/loader.js"></script>
+    
+</head>
+</html>
+<body class="home">
+    <!--[if lt IE 9]>
+    <div class="browsehappy">
+        当前网页 <strong>不支持</strong>
+        你正在使用的浏览器. 为了正常的访问, 请 <a href="http://browsehappy.com/">升级你的浏览器</a>.
+    </div>
+    <![endif]-->
+
+    <!-- 博客头部 -->
+    <header class="header">
+    <section class="container header-main">
+        <div class="logo">
+            <a href="/">
+                <div class="cover">
+                    <span class="name">数据酷</span>
+                    <span class="description">工欲善其事必先利其器</span>
+                </div>
+            </a>
+        </div>
+        <div class="dropnav icon-paragraph-justify" id="JELON__btnDropNav"></div>
+        <ul class="menu hidden" id="JELON__menu">
+            
+            <li rel="/2017/11/22/GitHub_hexo_travis/index.html" class="item ">
+                <a href="/" title="首页" class="icon-home">&nbsp;首页</a>
+            </li>
+            
+            <li rel="/2017/11/22/GitHub_hexo_travis/index.html" class="item ">
+                <a href="/comment/" title="留言" class="icon-comment">&nbsp;留言</a>
+            </li>
+            
+        </ul>
+        <div class="profile clearfix">
+            <div class="feeds fl">
+                
+                
+                <p class="links">
+                    
+                </p>
+                <p class="sns">
+                    
+                    <a href="javascript: void(0);" class="wechat">
+                        <b>■</b>
+                        公众号
+                        <span class="popover">
+                            <img src="/img/wechat_mp.jpg" width="120" height="120" alt="我的微信订阅号">
+                            <i class="arrow"></i>
+                        </span>
+                    </a>
+                </p>
+                
+            </div>
+            <div class="avatar fr">
+                <img src="/img/jelon.jpg" alt="avatar" title="Datacl" >
+            </div>
+        </div>
+    </section>
+</header>
+
+
+    <!-- 博客正文 -->
+    <div class="container body clearfix">
+        <section class="content">
+            <div class="content-main widget">
+                <!-- 文章页 -->
+<!-- 文章 -->
+<article class="post article">
+    <header class="text-center">
+        <h3 class="post-title"><span>hexo github travis_ci 构建博客</span></h3>
+    </header>
+    <p class="post-meta text-center">
+        杨金坤 发表于
+        <time datetime="2017-11-21T16:00:00.000Z">2017-11-22</time>
+    </p>
+    <div class="post-content">
+        <h1 id="hexo-github-travis-ci-构建博客"><a href="#hexo-github-travis-ci-构建博客" class="headerlink" title="hexo github travis_ci 构建博客"></a>hexo github travis_ci 构建博客</h1><h2 id="Travis-CI"><a href="#Travis-CI" class="headerlink" title="Travis CI"></a>Travis CI</h2><p>Travis CI 是目前新兴的开源持续集成构建项目，它与jenkins，GO的很明显的特别在于采用yaml格式，同时他是在在线的服务，不像jenkins需要你本地打架服务器，简洁清新独树一帜。目前大多数的github项目都已经移入到Travis CI的构建队列中，据说Travis CI每天运行超过4000次完整构建。对于做开源项目或者github的使用者，如果你的项目还没有加入Travis CI构建队列，那么我真的想对你说out了。</p>
+<h2 id="框架"><a href="#框架" class="headerlink" title="框架"></a>框架</h2><p>Hexo搭建–&gt;Github源码托管–&gt;Travis自动构建–&gt;Github提供的Gitpage服务托管</p>
+<h2 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h2><ul>
+<li>安装<a href="https://nodejs.org" target="_blank" rel="noopener">Nodejs</a></li>
+<li>安装<a href="https://git-for-windows.github.io/" target="_blank" rel="noopener">Git</a></li>
+<li>申请<a href="https://github.com" target="_blank" rel="noopener">GitHub</a></li>
+<li>申请<a href="https://travis-ci.org" target="_blank" rel="noopener">Travis</a><h2 id="Hexo"><a href="#Hexo" class="headerlink" title="Hexo"></a>Hexo</h2>Node和Git都安装好后,首先创建一个文件夹,如blog,用户存放hexo的配置文件,然后进入blog里安装Hexo。</li>
+</ul>
+<p>执行如下命令安装Hexo：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo npm install -g hexo</span><br></pre></td></tr></table></figure>
+<p>初始化然后，执行init命令初始化hexo,命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo init</span><br></pre></td></tr></table></figure>
+<p>生成静态页面</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo generate</span><br></pre></td></tr></table></figure>
+<p>本地启动</p>
+<p>启动本地服务，进行文章预览调试，命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo server</span><br></pre></td></tr></table></figure>
+<p>浏览器输入<a href="http://localhost:4000" target="_blank" rel="noopener">http://localhost:4000</a></p>
+<h2 id="github"><a href="#github" class="headerlink" title="github"></a>github</h2><p>生成后的HTML文件和博客的源文件我是放到一个仓库的，只是使用了不同的分支</p>
+<p>master：博客的静态文件，也就是hexo生成后的HTML文件，因为要使用Gitpage服务，所以他规定的网页文件必须是在master分支<br>blog-source：是博客的源代码</p>
+<p>git提交</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">git checkout blog-source</span><br><span class="line">git commit -m &quot;blog&quot;</span><br><span class="line">git remote show</span><br><span class="line">git add source/_posts/GitHub_hexo_travis.md</span><br><span class="line">git remote add origin https://github.com/blog/blog.github.io.git</span><br><span class="line">git push origin blog-source:blog-source</span><br></pre></td></tr></table></figure>
+<h2 id="Travis"><a href="#Travis" class="headerlink" title="Travis"></a>Travis</h2><ul>
+<li>My Repositories旁边的+，意思是添加一个要自动构建的仓库</li>
+<li>在Travis CI配置Github的Access Token</li>
+<li>创建.travis.yml配置文件</li>
+</ul>
+<p>参考文档</p>
+<ol>
+<li><a href="http://www.jianshu.com/p/465830080ea9" target="_blank" rel="noopener">HEXO+Github,搭建属于自己的博客</a></li>
+<li><a href="http://blog.csdn.net/woblog/article/details/51319364" target="_blank" rel="noopener">手把手教你使用Travis CI自动部署你的Hexo博客到Github上</a></li>
+</ol>
+
+    </div>
+    <p class="post-meta">
+        <span class="post-cat">分类：
+            <a class="cat-link" href="/categories/github/">github</a>
+        </span>
+        <span class="post-tags">
+            标签：
+            
+    
+        <a href="/tags/其他/" title="其他">其他</a>
+    
+
+        </span>
+    </p>
+</article>
+<div class="article-share clearfix text-center">
+    <div class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more"></a><a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a><a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a><a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网"></a><a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a></div>
+    <script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"1","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+</div>
+
+<!-- 上一篇/下一篇 -->
+
+<div class="article-nav clearfix">
+    
+    <span class="prev fl">
+        上一篇<br >
+        <a href="/2017/12/12/perl/">
+            
+                perl学习
+            
+        </a>
+    </span>
+    
+
+    
+    <span class="next fr">
+        下一篇<br >
+        <a href="/2017/11/22/git常用命令/">
+            
+                Git常用命令
+            
+        </a>
+    </span>
+    
+</div>
+
+<!-- 文章评论 -->
+
+    <div id="comments" class="comments cloud-tie-wrapper"></div>
+    <script>
+    var cloudTieConfig = {
+      url: document.location.href, 
+      sourceId: "GitHub_hexo_travis",
+      productKey: "c06bb9930e6f4b38a9997cb9bd17aba5",
+      target: "comments"
+    };
+    var yunManualLoad = true;
+    Tie.loader("aHR0cHM6Ly9hcGkuZ2VudGllLjE2My5jb20vcGMvbGl2ZXNjcmlwdC5odG1s", true);
+    </script>
+
+            </div>
+
+        </section>
+        <!-- 侧栏部分 -->
+<aside class="sidebar">
+    <section class="widget">
+        <h3 class="widget-hd"><strong>文章分类</strong></h3>
+        <!-- 文章分类 -->
+<ul class="widget-bd">
+    
+    <li>
+        <a href="/categories/github/">github</a>
+        <span class="badge">(1)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/calcite/">calcite</a>
+        <span class="badge">(1)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/数据理论/">数据理论</a>
+        <span class="badge">(2)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/ETL/">ETL</a>
+        <span class="badge">(1)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/元数据/">元数据</a>
+        <span class="badge">(1)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/nodejs/">nodejs</a>
+        <span class="badge">(5)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/开源/">开源</a>
+        <span class="badge">(2)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/tool/">tool</a>
+        <span class="badge">(1)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/Oracle/">Oracle</a>
+        <span class="badge">(1)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/perl/">perl</a>
+        <span class="badge">(1)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/Web技术/">Web技术</a>
+        <span class="badge">(1)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/数据治理/">数据治理</a>
+        <span class="badge">(1)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/本体论/">本体论</a>
+        <span class="badge">(1)</span>
+    </li>
+    
+</ul>
+    </section>
+
+    
+    <section class="widget">
+        <h3 class="widget-hd"><strong>热门标签</strong></h3>
+        <!-- 文章标签 -->
+<div class="widget-bd tag-wrap">
+  
+    <a class="tag-item" href="/tags/其他/" title="其他">其他 (3)</a>
+  
+    <a class="tag-item" href="/tags/常用/" title="常用">常用 (2)</a>
+  
+    <a class="tag-item" href="/tags/ETL/" title="ETL">ETL (1)</a>
+  
+    <a class="tag-item" href="/tags/调度/" title="调度">调度 (1)</a>
+  
+    <a class="tag-item" href="/tags/元数据交换/" title="元数据交换">元数据交换 (1)</a>
+  
+    <a class="tag-item" href="/tags/js/" title="js">js (3)</a>
+  
+    <a class="tag-item" href="/tags/esayui/" title="esayui">esayui (2)</a>
+  
+    <a class="tag-item" href="/tags/工具/" title="工具">工具 (1)</a>
+  
+    <a class="tag-item" href="/tags/drill/" title="drill">drill (1)</a>
+  
+    <a class="tag-item" href="/tags/SQL/" title="SQL">SQL (1)</a>
+  
+    <a class="tag-item" href="/tags/理论/" title="理论">理论 (3)</a>
+  
+</div>
+    </section>
+    
+
+    
+
+    
+    <!-- 友情链接 -->
+    <section class="widget">
+        <h3 class="widget-hd"><strong>友情链接</strong></h3>
+        <!-- 文章分类 -->
+<ul class="widget-bd">
+    
+        <li>
+            <a href="http://www.idataskys.com/" target="_blank" title="数据挖掘博客">Miller博客</a>
+        </li>
+    
+</ul>
+    </section>
+    
+</aside>
+<!-- / 侧栏部分 -->
+    </div>
+
+    <!-- 博客底部 -->
+    <footer class="footer">
+    &copy;
+    
+        2016-2023
+    
+
+    <a href="/">datacl.top Loves You</a>
+    <br/>
+    <sapn>备案号： </span><a href="https://beian.miit.gov.cn">蜀ICP备17003326号-1</a>
+</footer>
+<div class="back-to-top" id="JELON__backToTop" title="返回顶部">返回顶部</div>
+<!-- 添加百度自动推送 -->
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+    <!--博客js脚本 -->
+    <!-- 这里放网站js脚本 -->
+<script src="/js/main.js"></script>
+</body>
+</html>

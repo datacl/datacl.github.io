@@ -1,0 +1,350 @@
+<!doctype html>
+<html lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=11,IE=10,IE=9,IE=8">
+    <meta name="baidu-site-verification" content="dIcXMeY8Ya">
+    
+    <title>ETL调度，调度的相关术语 | 数据酷</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+    <meta name="keywords" content="数据库, 数据仓库, 数据分析, 数据挖掘, 数据整合">
+    <meta name="description" content="数据科学">
+
+    
+    <link rel="alternative" href="/atom.xml" title="数据酷" type="application/atom+xml">
+    
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    
+    <link rel="stylesheet" href="/css/style.css">
+    <!--[if lt IE 9]>
+    <script src="/js/html5.js"></script>
+    <![endif]-->
+    
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "//hm.baidu.com/hm.js?fd459238242776d173cdc64918fb32f2";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+
+    
+    <script>var yunModuleEnv = true;</script>
+    <script src="https://img1.cache.netease.com/f2e/tie/yun/sdk/loader.js"></script>
+    
+</head>
+</html>
+<body class="home">
+    <!--[if lt IE 9]>
+    <div class="browsehappy">
+        当前网页 <strong>不支持</strong>
+        你正在使用的浏览器. 为了正常的访问, 请 <a href="http://browsehappy.com/">升级你的浏览器</a>.
+    </div>
+    <![endif]-->
+
+    <!-- 博客头部 -->
+    <header class="header">
+    <section class="container header-main">
+        <div class="logo">
+            <a href="/">
+                <div class="cover">
+                    <span class="name">数据酷</span>
+                    <span class="description">工欲善其事必先利其器</span>
+                </div>
+            </a>
+        </div>
+        <div class="dropnav icon-paragraph-justify" id="JELON__btnDropNav"></div>
+        <ul class="menu hidden" id="JELON__menu">
+            
+            <li rel="/2017/12/27/ETL调度/index.html" class="item ">
+                <a href="/" title="首页" class="icon-home">&nbsp;首页</a>
+            </li>
+            
+            <li rel="/2017/12/27/ETL调度/index.html" class="item ">
+                <a href="/comment/" title="留言" class="icon-comment">&nbsp;留言</a>
+            </li>
+            
+        </ul>
+        <div class="profile clearfix">
+            <div class="feeds fl">
+                
+                
+                <p class="links">
+                    
+                </p>
+                <p class="sns">
+                    
+                    <a href="javascript: void(0);" class="wechat">
+                        <b>■</b>
+                        公众号
+                        <span class="popover">
+                            <img src="/img/wechat_mp.jpg" width="120" height="120" alt="我的微信订阅号">
+                            <i class="arrow"></i>
+                        </span>
+                    </a>
+                </p>
+                
+            </div>
+            <div class="avatar fr">
+                <img src="/img/jelon.jpg" alt="avatar" title="Datacl" >
+            </div>
+        </div>
+    </section>
+</header>
+
+
+    <!-- 博客正文 -->
+    <div class="container body clearfix">
+        <section class="content">
+            <div class="content-main widget">
+                <!-- 文章页 -->
+<!-- 文章 -->
+<article class="post article">
+    <header class="text-center">
+        <h3 class="post-title"><span>ETL调度，调度的相关术语</span></h3>
+    </header>
+    <p class="post-meta text-center">
+        杨金坤 发表于
+        <time datetime="2017-12-26T16:00:00.000Z">2017-12-27</time>
+    </p>
+    <div class="post-content">
+        <h1 id="ETL调度，调度的相关术语"><a href="#ETL调度，调度的相关术语" class="headerlink" title="ETL调度，调度的相关术语"></a>ETL调度，调度的相关术语</h1><h3 id="1-作业-job"><a href="#1-作业-job" class="headerlink" title="1.作业-job"></a>1.作业-job</h3><p>数据系统中最小执行单位，作业类型一般为存储过程、SQL脚本、shell脚本、程序（C、java）、webservice接口、ETL专业工具作业（Informatica powercenter、IBM datastage、Pentaho PDI（kettle）、Oracle ODI、Microsoft SSIS）、hadoop生态等。</p>
+<h3 id="2-任务-task"><a href="#2-任务-task" class="headerlink" title="2.任务-task"></a>2.任务-task</h3><p>作业被实例化到任务计划表中称之为任务。</p>
+<h3 id="3-调度工具的特性"><a href="#3-调度工具的特性" class="headerlink" title="3.调度工具的特性"></a>3.调度工具的特性</h3><h4 id="3-1顺序性"><a href="#3-1顺序性" class="headerlink" title="3.1顺序性"></a>3.1顺序性</h4><p>任务的先后顺序，后置任务一定是等待前置任务执行后运行，可以是成功后触发也可以是失败后触发。</p>
+<h4 id="3-2动态性"><a href="#3-2动态性" class="headerlink" title="3.2动态性"></a>3.2动态性</h4><p>任务的状态是变化的，一般有如下几种状态：</p>
+<ul>
+<li>保持 HOLDING 任务被实例化后的状态，任务未被激活，不会被触发执行。</li>
+<li>等待 WAITING 任务等待，一般分等待前置任务完成、等待系统资源、等待设定时间，一旦没有前置任务和资源充足，该任务会被执行。</li>
+<li>运行 RUNNING 任务正在执行。</li>
+<li>完成 DONE 任务执行成功。</li>
+<li>失败 FAILED 任务执行失败。<h4 id="3-3容错性"><a href="#3-3容错性" class="headerlink" title="3.3容错性"></a>3.3容错性</h4>失败的任务可被手动或自动重做。<h4 id="3-4并行性"><a href="#3-4并行性" class="headerlink" title="3.4并行性"></a>3.4并行性</h4>无先后顺序的任务执行是同时的、互不影响的。<h4 id="3-5排他性"><a href="#3-5排他性" class="headerlink" title="3.5排他性"></a>3.5排他性</h4>无先后顺序的任务执行是不能同时的。<h4 id="3-6并发性"><a href="#3-6并发性" class="headerlink" title="3.6并发性"></a>3.6并发性</h4>可以控制任务并发的执行数，以有效控制系统资源利用，减少线程等待，提高IO性能。<h4 id="3-7优先性"><a href="#3-7优先性" class="headerlink" title="3.7优先性"></a>3.7优先性</h4>优先级高的任务需要被优先执行，同一系统资源限制下，优先级低的任务应排在优先级高的后面被执行。<h3 id="4-调度工具的基本功能"><a href="#4-调度工具的基本功能" class="headerlink" title="4.调度工具的基本功能"></a>4.调度工具的基本功能</h3><h4 id="4-1作业定义"><a href="#4-1作业定义" class="headerlink" title="4.1作业定义"></a>4.1作业定义</h4>定义作业的基本信息，如名称，类型，重做次数，互斥条件，优先级，作业参数，定时器。<h4 id="4-2并发定义"><a href="#4-2并发定义" class="headerlink" title="4.2并发定义"></a>4.2并发定义</h4>ETL节点服务器，数据源，目标库，作业类型的并发个数。<h4 id="4-3互斥定义"><a href="#4-3互斥定义" class="headerlink" title="4.3互斥定义"></a>4.3互斥定义</h4>ETL节点服务器，数据源，目标，作业类型的互斥条件。<h4 id="4-4任务监控"><a href="#4-4任务监控" class="headerlink" title="4.4任务监控"></a>4.4任务监控</h4>展示当前批次的执行概况，可以操作当前任务的执行状态，完成实例化，激活任务，监控任务，任务重做，任务暂定，任务中断，任务恢复等。<h4 id="4-5执行历史"><a href="#4-5执行历史" class="headerlink" title="4.5执行历史"></a>4.5执行历史</h4>查看任务执行的历史记录。<h4 id="4-6节点配置"><a href="#4-6节点配置" class="headerlink" title="4.6节点配置"></a>4.6节点配置</h4>配置ETL节点服务器的信息。<h4 id="4-7数据源配置"><a href="#4-7数据源配置" class="headerlink" title="4.7数据源配置"></a>4.7数据源配置</h4>配置任务需要连接的数据库的连接信息。</li>
+</ul>
+
+    </div>
+    <p class="post-meta">
+        <span class="post-cat">分类：
+            <a class="cat-link" href="/categories/ETL/">ETL</a>
+        </span>
+        <span class="post-tags">
+            标签：
+            
+    
+        <a href="/tags/调度/" title="调度">调度</a>
+    
+
+        </span>
+    </p>
+</article>
+<div class="article-share clearfix text-center">
+    <div class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more"></a><a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a><a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a><a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网"></a><a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a></div>
+    <script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"1","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+</div>
+
+<!-- 上一篇/下一篇 -->
+
+<div class="article-nav clearfix">
+    
+    <span class="prev fl">
+        上一篇<br >
+        <a href="/2018/05/31/JMI/">
+            
+                The Java™ Metadata Interface JMI
+            
+        </a>
+    </span>
+    
+
+    
+    <span class="next fr">
+        下一篇<br >
+        <a href="/2017/12/19/ETL算法/">
+            
+                ETL策略
+            
+        </a>
+    </span>
+    
+</div>
+
+<!-- 文章评论 -->
+
+    <div id="comments" class="comments cloud-tie-wrapper"></div>
+    <script>
+    var cloudTieConfig = {
+      url: document.location.href, 
+      sourceId: "ETL调度",
+      productKey: "c06bb9930e6f4b38a9997cb9bd17aba5",
+      target: "comments"
+    };
+    var yunManualLoad = true;
+    Tie.loader("aHR0cHM6Ly9hcGkuZ2VudGllLjE2My5jb20vcGMvbGl2ZXNjcmlwdC5odG1s", true);
+    </script>
+
+            </div>
+
+        </section>
+        <!-- 侧栏部分 -->
+<aside class="sidebar">
+    <section class="widget">
+        <h3 class="widget-hd"><strong>文章分类</strong></h3>
+        <!-- 文章分类 -->
+<ul class="widget-bd">
+    
+    <li>
+        <a href="/categories/github/">github</a>
+        <span class="badge">(1)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/calcite/">calcite</a>
+        <span class="badge">(1)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/数据理论/">数据理论</a>
+        <span class="badge">(2)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/ETL/">ETL</a>
+        <span class="badge">(1)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/元数据/">元数据</a>
+        <span class="badge">(1)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/nodejs/">nodejs</a>
+        <span class="badge">(5)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/开源/">开源</a>
+        <span class="badge">(2)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/tool/">tool</a>
+        <span class="badge">(1)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/Oracle/">Oracle</a>
+        <span class="badge">(1)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/perl/">perl</a>
+        <span class="badge">(1)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/Web技术/">Web技术</a>
+        <span class="badge">(1)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/数据治理/">数据治理</a>
+        <span class="badge">(1)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/本体论/">本体论</a>
+        <span class="badge">(1)</span>
+    </li>
+    
+</ul>
+    </section>
+
+    
+    <section class="widget">
+        <h3 class="widget-hd"><strong>热门标签</strong></h3>
+        <!-- 文章标签 -->
+<div class="widget-bd tag-wrap">
+  
+    <a class="tag-item" href="/tags/其他/" title="其他">其他 (3)</a>
+  
+    <a class="tag-item" href="/tags/常用/" title="常用">常用 (2)</a>
+  
+    <a class="tag-item" href="/tags/ETL/" title="ETL">ETL (1)</a>
+  
+    <a class="tag-item" href="/tags/调度/" title="调度">调度 (1)</a>
+  
+    <a class="tag-item" href="/tags/元数据交换/" title="元数据交换">元数据交换 (1)</a>
+  
+    <a class="tag-item" href="/tags/js/" title="js">js (3)</a>
+  
+    <a class="tag-item" href="/tags/esayui/" title="esayui">esayui (2)</a>
+  
+    <a class="tag-item" href="/tags/工具/" title="工具">工具 (1)</a>
+  
+    <a class="tag-item" href="/tags/drill/" title="drill">drill (1)</a>
+  
+    <a class="tag-item" href="/tags/SQL/" title="SQL">SQL (1)</a>
+  
+    <a class="tag-item" href="/tags/理论/" title="理论">理论 (3)</a>
+  
+</div>
+    </section>
+    
+
+    
+
+    
+    <!-- 友情链接 -->
+    <section class="widget">
+        <h3 class="widget-hd"><strong>友情链接</strong></h3>
+        <!-- 文章分类 -->
+<ul class="widget-bd">
+    
+        <li>
+            <a href="http://www.idataskys.com/" target="_blank" title="数据挖掘博客">Miller博客</a>
+        </li>
+    
+</ul>
+    </section>
+    
+</aside>
+<!-- / 侧栏部分 -->
+    </div>
+
+    <!-- 博客底部 -->
+    <footer class="footer">
+    &copy;
+    
+        2016-2023
+    
+
+    <a href="/">datacl.top Loves You</a>
+    <br/>
+    <sapn>备案号： </span><a href="https://beian.miit.gov.cn">蜀ICP备17003326号-1</a>
+</footer>
+<div class="back-to-top" id="JELON__backToTop" title="返回顶部">返回顶部</div>
+<!-- 添加百度自动推送 -->
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+    <!--博客js脚本 -->
+    <!-- 这里放网站js脚本 -->
+<script src="/js/main.js"></script>
+</body>
+</html>

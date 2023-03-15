@@ -1,0 +1,371 @@
+<!doctype html>
+<html lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=11,IE=10,IE=9,IE=8">
+    <meta name="baidu-site-verification" content="dIcXMeY8Ya">
+    
+    <title>perl学习 | 数据酷</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+    <meta name="keywords" content="数据库, 数据仓库, 数据分析, 数据挖掘, 数据整合">
+    <meta name="description" content="数据科学">
+
+    
+    <link rel="alternative" href="/atom.xml" title="数据酷" type="application/atom+xml">
+    
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    
+    <link rel="stylesheet" href="/css/style.css">
+    <!--[if lt IE 9]>
+    <script src="/js/html5.js"></script>
+    <![endif]-->
+    
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "//hm.baidu.com/hm.js?fd459238242776d173cdc64918fb32f2";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+
+    
+    <script>var yunModuleEnv = true;</script>
+    <script src="https://img1.cache.netease.com/f2e/tie/yun/sdk/loader.js"></script>
+    
+</head>
+</html>
+<body class="home">
+    <!--[if lt IE 9]>
+    <div class="browsehappy">
+        当前网页 <strong>不支持</strong>
+        你正在使用的浏览器. 为了正常的访问, 请 <a href="http://browsehappy.com/">升级你的浏览器</a>.
+    </div>
+    <![endif]-->
+
+    <!-- 博客头部 -->
+    <header class="header">
+    <section class="container header-main">
+        <div class="logo">
+            <a href="/">
+                <div class="cover">
+                    <span class="name">数据酷</span>
+                    <span class="description">工欲善其事必先利其器</span>
+                </div>
+            </a>
+        </div>
+        <div class="dropnav icon-paragraph-justify" id="JELON__btnDropNav"></div>
+        <ul class="menu hidden" id="JELON__menu">
+            
+            <li rel="/2017/12/12/perl/index.html" class="item ">
+                <a href="/" title="首页" class="icon-home">&nbsp;首页</a>
+            </li>
+            
+            <li rel="/2017/12/12/perl/index.html" class="item ">
+                <a href="/comment/" title="留言" class="icon-comment">&nbsp;留言</a>
+            </li>
+            
+        </ul>
+        <div class="profile clearfix">
+            <div class="feeds fl">
+                
+                
+                <p class="links">
+                    
+                </p>
+                <p class="sns">
+                    
+                    <a href="javascript: void(0);" class="wechat">
+                        <b>■</b>
+                        公众号
+                        <span class="popover">
+                            <img src="/img/wechat_mp.jpg" width="120" height="120" alt="我的微信订阅号">
+                            <i class="arrow"></i>
+                        </span>
+                    </a>
+                </p>
+                
+            </div>
+            <div class="avatar fr">
+                <img src="/img/jelon.jpg" alt="avatar" title="Datacl" >
+            </div>
+        </div>
+    </section>
+</header>
+
+
+    <!-- 博客正文 -->
+    <div class="container body clearfix">
+        <section class="content">
+            <div class="content-main widget">
+                <!-- 文章页 -->
+<!-- 文章 -->
+<article class="post article">
+    <header class="text-center">
+        <h3 class="post-title"><span>perl学习</span></h3>
+    </header>
+    <p class="post-meta text-center">
+        杨金坤 发表于
+        <time datetime="2017-12-11T16:00:00.000Z">2017-12-12</time>
+    </p>
+    <div class="post-content">
+        <h2 id="perl-shell-头"><a href="#perl-shell-头" class="headerlink" title="perl shell 头"></a>perl shell 头</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">#!/usr/bin/perl</span><br><span class="line"></span><br><span class="line">require Module::CoreList;</span><br></pre></td></tr></table></figure>
+<h2 id="数值计算"><a href="#数值计算" class="headerlink" title="数值计算"></a>数值计算</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">my $pia=3.1415926;</span><br><span class="line">my $r=12.5;</span><br><span class="line"></span><br><span class="line">print 2*$pia*$r;</span><br><span class="line">print &quot;\n&quot;;</span><br></pre></td></tr></table></figure>
+<h2 id="计算圆周长-输入半径"><a href="#计算圆周长-输入半径" class="headerlink" title="计算圆周长 输入半径"></a>计算圆周长 输入半径</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">print &quot;输入圆的半径：&quot;;</span><br><span class="line">my $pia=3.1415926;</span><br><span class="line">chomp ($r = &lt;STDIN&gt;);</span><br><span class="line">if ($r &lt; 0 ) &#123;</span><br><span class="line">  print &quot;周长:0\n&quot;;</span><br><span class="line">&#125; else &#123;</span><br><span class="line">  print &quot;周长:&quot;.2*$pia*$r.&quot;\n&quot;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="多行输入"><a href="#多行输入" class="headerlink" title="多行输入"></a>多行输入</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">my @char = &lt;STDIN&gt;;</span><br><span class="line">print reverse @char;</span><br></pre></td></tr></table></figure>
+<h2 id="求和计算"><a href="#求和计算" class="headerlink" title="求和计算"></a>求和计算</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">sub total&#123;</span><br><span class="line">   $sum = 0;</span><br><span class="line"> </span><br><span class="line">   foreach $item (@_)&#123;</span><br><span class="line">      $sum += $item;</span><br><span class="line">   &#125;</span><br><span class="line">   return $sum;</span><br><span class="line"> &#125;</span><br><span class="line">my @fred = qw&#123; 1 3 5 7 9 &#125;;</span><br><span class="line">my $fred_total = &amp;total(@fred);</span><br><span class="line">print &quot;The total of \@fred is $fred_total.\n&quot;;</span><br><span class="line">print &quot;Enter some numbers on separate lines: &quot;;</span><br><span class="line">my $user_total = &amp;total(&lt;STDIN&gt;);</span><br><span class="line">print &quot;The total of those numbers is $user_total.\n&quot;; </span><br><span class="line"></span><br><span class="line">print &amp;total(1..1000);</span><br></pre></td></tr></table></figure>
+<h2 id="字符排序"><a href="#字符排序" class="headerlink" title="字符排序"></a>字符排序</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">my @char = &lt;STDIN&gt;;</span><br><span class="line">print sort @char;</span><br><span class="line"></span><br><span class="line">my %last_name = qw&#123;fred flintstone Wilma Flintstone Barney Rubblebetty rubble Bamm- Bamm Rubble PEBBLES FLINTSONE&#125;;</span><br><span class="line">foreach my$key(sort &#123; lc($last_name&#123;$a&#125;) cmp  lc($last_name&#123;$b&#125;) &#125; keys %last_name)&#123;</span><br><span class="line"></span><br><span class="line">    print&quot;$key=&gt;$last_name&#123;$key&#125;\n&quot;;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="位置查找"><a href="#位置查找" class="headerlink" title="位置查找"></a>位置查找</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">my $char=&quot;This is a test.&quot;;</span><br><span class="line">chomp ($sub = &lt;STDIN&gt;);</span><br><span class="line">my $ind=0;</span><br><span class="line">while ($ind &lt; length($char))&#123;</span><br><span class="line">	$ind=index($char,$sub,$ind);</span><br><span class="line">	if($ind == -1) &#123;</span><br><span class="line">		last;</span><br><span class="line">	&#125;</span><br><span class="line">	print $ind++.&quot; &quot;;</span><br><span class="line">&#125;</span><br><span class="line">print &quot;\n&quot;;</span><br></pre></td></tr></table></figure>
+<h2 id="目录操作"><a href="#目录操作" class="headerlink" title="目录操作"></a>目录操作</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">print &quot;输入需切换目录：&quot;;</span><br><span class="line">chomp ($dir = &lt;STDIN&gt;);</span><br><span class="line">chdir( $dir ) or die &quot;无法切换目录到&quot;.$dir.&quot;\n&quot;;</span><br><span class="line">print &quot;你现在所在的目录为 $dir\n&quot;;</span><br><span class="line">print `ls -l`;</span><br><span class="line">opendir ($dir, &apos;.&apos;);</span><br><span class="line">while ($file = readdir $dir) &#123;</span><br><span class="line">  print &quot;$file\n&quot;;</span><br><span class="line">&#125;</span><br><span class="line">closedir $dir;</span><br></pre></td></tr></table></figure>
+<h2 id="查看目录"><a href="#查看目录" class="headerlink" title="查看目录"></a>查看目录</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">print &quot;输入需切换目录：&quot;;</span><br><span class="line">chomp ($dir = &lt;STDIN&gt;);</span><br><span class="line">chdir( $dir ) or die &quot;无法切换目录到&quot;.$dir.&quot;\n&quot;;</span><br><span class="line">print &quot;你现在所在的目录为 $dir\n&quot;;</span><br><span class="line">print join(&quot;\n&quot;,sort glob(&quot;.* *&quot;)).&quot;\n&quot;;</span><br></pre></td></tr></table></figure>
+<h2 id="文件操作-删除"><a href="#文件操作-删除" class="headerlink" title="文件操作-删除"></a>文件操作-删除</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">unless(@ARGV) &#123;</span><br><span class="line">	die &quot;perl $0 &lt;文件名&gt; \n&quot;;</span><br><span class="line">&#125;</span><br><span class="line">foreach(@ARGV) &#123;</span><br><span class="line">unlink ($_);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="文件操作-重命名"><a href="#文件操作-重命名" class="headerlink" title="文件操作-重命名"></a>文件操作-重命名</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">if ( @ARGV != 2 ) &#123;</span><br><span class="line">	die &quot;perl $0 &lt;原文件名&gt;  &lt;新文件名&gt; \n&quot;;</span><br><span class="line">&#125;</span><br><span class="line">rename($ARGV[0],$ARGV[1]);</span><br></pre></td></tr></table></figure>
+<h2 id="日期截取"><a href="#日期截取" class="headerlink" title="日期截取"></a>日期截取</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">#Date:2005-05-31;</span><br><span class="line">#判断当前日期是一个星期的第几天;</span><br><span class="line">#weekday（周一至周五），则输出gettowork;否则，输出goplay;</span><br><span class="line">if(`date`=~/^S/)&#123;</span><br><span class="line">print&quot;goplay!\n&quot;;</span><br><span class="line">&#125;else&#123;</span><br><span class="line">print&quot;gettowork!\n&quot;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="模块"><a href="#模块" class="headerlink" title="模块"></a>模块</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">my %modules = %&#123;$Module::CoreList::version&#123;5.006&#125;&#125;; </span><br><span class="line">print join &apos;, &apos;, Module::CoreList-&gt;find_modules();</span><br><span class="line">print $Module::CoreList::version&#123;5.006&#125;;</span><br><span class="line">print keys %modules;</span><br><span class="line">#print join &apos;, &apos;, Module::CoreList-&gt;find_modules(qr/Cwd/);</span><br></pre></td></tr></table></figure>
+<h2 id="目录-全路径拼接"><a href="#目录-全路径拼接" class="headerlink" title="目录-全路径拼接"></a>目录-全路径拼接</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">use Cwd;</span><br><span class="line">use File::Spec;</span><br><span class="line">use File::Basename;</span><br><span class="line">my $dir = getcwd;</span><br><span class="line">my $fl = &quot;&quot;;</span><br><span class="line">foreach(glob &quot;*&quot;) &#123;</span><br><span class="line">	 $fl = File::Spec-&gt;catfile($dir,$_).&quot;\n&quot;;</span><br><span class="line">	 print $fl;</span><br><span class="line">	 $fl = basename $fl;</span><br><span class="line">	 print $fl;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h2 id="文件链接"><a href="#文件链接" class="headerlink" title="文件链接"></a>文件链接</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">unless(@ARGV) &#123;</span><br><span class="line">	die &quot;perl $0 &lt;dir&gt; \n&quot;;</span><br><span class="line">&#125;</span><br><span class="line">foreach(glob &quot;*&quot;) &#123;</span><br><span class="line">	 my $link = readlink &quot;$_&quot;;</span><br><span class="line">	 if(defined $link) &#123;</span><br><span class="line">	 	print &quot;$_ -&gt; $link\n&quot;;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">link $ARGV[0],$ARGV[1] or warn &quot;不能创建连接&quot;;</span><br><span class="line"></span><br><span class="line">symlink $ARGV[0],$ARGV[1] or warn &quot;不能创建连接&quot;;</span><br></pre></td></tr></table></figure>
+<h2 id="哈希-输出"><a href="#哈希-输出" class="headerlink" title="哈希-输出"></a>哈希-输出</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">my @char = &lt;STDIN&gt;;</span><br><span class="line">my $r = join(&apos;&apos;,@char);</span><br><span class="line">my %name = (&quot;1&quot;=&gt;&quot;fred&quot;,&quot;2&quot;=&gt;&quot;betty&quot;,&quot;3&quot;=&gt;&quot;barney&quot;,&quot;4&quot;=&gt;&quot;dino&quot;,&quot;5&quot;=&gt;&quot;Wilma&quot;,&quot;6&quot;=&gt;&quot;pebbles&quot;,&quot;7&quot;=&gt;&quot;bamm-bamm&quot;);</span><br><span class="line">@char = split(&apos;\n&apos;,$r);</span><br><span class="line">my $size = @char;</span><br><span class="line">my $a=0;</span><br><span class="line">while( $a &lt; $size )&#123;</span><br><span class="line">    print &quot;$name&#123;$char[$a++]&quot;&#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="重复打印"><a href="#重复打印" class="headerlink" title="重复打印"></a>重复打印</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">print &quot;打印字符指定次数\n输入字符：&quot;;</span><br><span class="line">my $char = &lt;STDIN&gt;;</span><br><span class="line">print &quot;输入需要打印的次数：&quot;;</span><br><span class="line">chomp ($cnt = &lt;STDIN&gt;);</span><br><span class="line">print $char x $cnt;</span><br></pre></td></tr></table></figure>
+<h2 id="计算乘积"><a href="#计算乘积" class="headerlink" title="计算乘积"></a>计算乘积</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">print &quot;两个数值的乘积\n输入数字：&quot;;</span><br><span class="line">chomp ($num1 = &lt;STDIN&gt;);</span><br><span class="line">print &quot;输入数字：&quot;;</span><br><span class="line">chomp ($num2 = &lt;STDIN&gt;);</span><br><span class="line">print &quot;$num1 * $num2 = &quot;.$num1*$num2.&quot;\n&quot;;</span><br></pre></td></tr></table></figure>
+<h2 id="根据输入匹配姓名"><a href="#根据输入匹配姓名" class="headerlink" title="根据输入匹配姓名"></a>根据输入匹配姓名</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">my @fname=(&quot;flintstone&quot;,&quot;rubble&quot;,&quot;flintstone&quot;);</span><br><span class="line">my @name=(&quot;fred&quot;,&quot;barney&quot;,&quot;wilma&quot;);</span><br><span class="line">my $size = @name;</span><br><span class="line">my $a=0;</span><br><span class="line">while( $a &lt; $size )&#123;</span><br><span class="line">	  #print $fname[$a];</span><br><span class="line">    if( $name[$a] eq &quot;fred&quot; )&#123;</span><br><span class="line">    # 布尔表达式为true时执行</span><br><span class="line">    print $fname[$a].&quot;\n&quot;;</span><br><span class="line">    &#125;</span><br><span class="line">    $a=$a+1;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="哈希-value-输出"><a href="#哈希-value-输出" class="headerlink" title="哈希 value 输出"></a>哈希 value 输出</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">print &quot;given name?\n&quot;;</span><br><span class="line">my $gname=&lt;STDIN&gt;;</span><br><span class="line">my %name=(&quot;fred\n&quot;,&quot;flintstone&quot;,&quot;barney\n&quot;,&quot;rubble&quot;,&quot;wilma\n&quot;,&quot;flintstone&quot;);</span><br><span class="line">print &quot;family name :&quot;.($name&#123;$gname&#125; or die &quot;family name :can not find &quot;.$gname ).&quot;\n&quot; ;</span><br></pre></td></tr></table></figure>
+<h2 id="字符计数"><a href="#字符计数" class="headerlink" title="字符计数"></a>字符计数</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">print &quot;type word like this :fred,barney,dino,wilma,fred&quot;;</span><br><span class="line">my $var = &lt;STDIN&gt;;  </span><br><span class="line">my $count = ($var =~ s/fred/fred/g);  </span><br><span class="line">print $count;</span><br></pre></td></tr></table></figure>
+<h2 id="字符计数-1"><a href="#字符计数-1" class="headerlink" title="字符计数"></a>字符计数</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">print &quot;type word like this :fred,barney,dino,wilma,fred!\n&quot;;</span><br><span class="line">chomp ($var = &lt;STDIN&gt;);</span><br><span class="line">my @array = split(&apos;,&apos;, $var);</span><br><span class="line">my %count;</span><br><span class="line">grep &#123; ++$count&#123; $_ &#125; &lt; 2; &#125; @array;</span><br><span class="line">for $char ( keys %count )</span><br><span class="line">&#123;</span><br><span class="line">     print(&quot;$char =&gt; $count&#123;$char&#125;\n&quot;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="文本替换"><a href="#文本替换" class="headerlink" title="文本替换"></a>文本替换</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">open(FILE,&quot;&lt;myfile.txt&quot;) or die &quot;Can&apos;t open myfile: $!&quot;;</span><br><span class="line">open(OFILE,&quot;&gt;myfile.txt.out&quot;) or die &quot;Can&apos;t open myfile: $!&quot;;</span><br><span class="line">foreach(&lt;FILE&gt;) &#123;</span><br><span class="line">  $_ =~ s/fred/Larry/;</span><br><span class="line">  print OFILE $_ ;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">open(FILE,&quot;&lt;myfile.txt&quot;) or die &quot;Can&apos;t open myfile: $!&quot;;</span><br><span class="line">open(OFILE,&quot;&gt;myfile.txt.out&quot;) or die &quot;Can&apos;t open myfile: $!&quot;;</span><br><span class="line">foreach(&lt;FILE&gt;) &#123;</span><br><span class="line">  $_ =~ s/fred/&lt;replace&gt;/i;</span><br><span class="line">  $_ =~ s/wilma/fred/i;</span><br><span class="line">  $_ =~ s/&lt;replace&gt;/wilma/i;</span><br><span class="line">  print OFILE $_ ;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="随机试验"><a href="#随机试验" class="headerlink" title="随机试验"></a>随机试验</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">chomp($guess = &lt;STDIN&gt;);</span><br><span class="line">while( $guess != &quot;&quot; and $guess != &quot;exit&quot; and $guess != &quot;quit&quot;) &#123;</span><br><span class="line">	if ($guess &gt; int(1 + rand 100) ) &#123;</span><br><span class="line">		print &quot;too high\n&quot;;</span><br><span class="line">	&#125; elsif ($guess &lt; int(1 + rand 100)) &#123;</span><br><span class="line">		print &quot;too low\n&quot;;</span><br><span class="line">	&#125; else &#123;</span><br><span class="line">		print &quot;corect\n&quot;;</span><br><span class="line">		last;</span><br><span class="line">	&#125;</span><br><span class="line">	chomp($guess = &lt;STDIN&gt;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="简单正则"><a href="#简单正则" class="headerlink" title="简单正则"></a>简单正则</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">print grep /wilma/ &amp;&amp; /fred/, &lt;FILE&gt;; # 同时包含wilma 和 fred </span><br><span class="line">my $what = &quot;fred|barney&quot;;</span><br><span class="line">print grep /($what)&#123;3&#125;/,&lt;FILE&gt;;</span><br><span class="line">print grep /\b[a-z]+a\b/,&lt;FILE&gt;; # 单词以a结尾</span><br><span class="line">print grep /^([^A-Z]+)?[A-Z]([^A-Z]+)?$/, &lt;FILE&gt;; #只含一个大写字母</span><br><span class="line"></span><br><span class="line">my @char = (&quot;x&quot;,&quot;x &quot;,&quot;xx  &quot;);</span><br><span class="line">print grep(s/\s+$/_\n/,&lt;STDIN&gt;); # 空白结尾</span><br></pre></td></tr></table></figure>
+<h2 id="格式化输出"><a href="#格式化输出" class="headerlink" title="格式化输出"></a>格式化输出</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">format myformat =</span><br><span class="line">12345678901234567890</span><br><span class="line">@&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;</span><br><span class="line">$name</span><br><span class="line">.</span><br><span class="line"></span><br><span class="line">$~ = &quot;myformat&quot;;</span><br><span class="line"></span><br><span class="line">while(1)</span><br><span class="line">&#123;</span><br><span class="line">   chomp ($name = &lt;STDIN&gt;);</span><br><span class="line">   write;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">format myformat =</span><br><span class="line">@&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;</span><br><span class="line">$name</span><br><span class="line">.</span><br><span class="line"></span><br><span class="line">$~ = &quot;myformat&quot;;</span><br><span class="line">@char = &lt;STDIN&gt;;</span><br><span class="line">foreach(@char) &#123;</span><br><span class="line">  $name=$_;</span><br><span class="line">  write;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="倒序打印"><a href="#倒序打印" class="headerlink" title="倒序打印"></a>倒序打印</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">open(FILE,&quot;&lt;myfile.txt&quot;) or die &quot;Can&apos;t open myfile: $!&quot;;</span><br><span class="line">foreach (reverse &lt;FILE&gt;)&#123;</span><br><span class="line">	print &quot;$_&quot;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="平均数"><a href="#平均数" class="headerlink" title="平均数"></a>平均数</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">sub average&#123;</span><br><span class="line">   # 获取所有传入的参数</span><br><span class="line">   $n = scalar(@_);</span><br><span class="line">   $sum = 0;</span><br><span class="line"> </span><br><span class="line">   foreach $item (@_)&#123;</span><br><span class="line">      $sum += $item;</span><br><span class="line">   &#125;</span><br><span class="line">   $sum / $n;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="大于平均数"><a href="#大于平均数" class="headerlink" title="大于平均数"></a>大于平均数</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">sub above_average&#123;</span><br><span class="line">   # 获取所有传入的参数</span><br><span class="line">   $avg = average(@_);</span><br><span class="line">   $above = &quot;&quot;;</span><br><span class="line">   foreach $item (@_)&#123;</span><br><span class="line">   	  if ( $item &gt; $avg) &#123;</span><br><span class="line">   	    $above = &quot;$above $item&quot;</span><br><span class="line">   	  &#125;</span><br><span class="line">   &#125;</span><br><span class="line">   return $above;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">my @fred = &amp;above_average(1..10);</span><br><span class="line">print &quot;\@fred is @fred\n&quot;;</span><br><span class="line">print &quot;(Should be 6 7 8 9 10)\n&quot;;</span><br><span class="line">my @barney = &amp;above_average(100, 1..10);</span><br><span class="line">print &quot;\@barney is @barney\n&quot;;</span><br><span class="line">print &quot;(Should be just 100)\n&quot;;</span><br></pre></td></tr></table></figure>
+
+    </div>
+    <p class="post-meta">
+        <span class="post-cat">分类：
+            <a class="cat-link" href="/categories/perl/">perl</a>
+        </span>
+        <span class="post-tags">
+            标签：
+            
+    
+        <a href="/tags/其他/" title="其他">其他</a>
+    
+
+        </span>
+    </p>
+</article>
+<div class="article-share clearfix text-center">
+    <div class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more"></a><a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a><a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a><a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网"></a><a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a></div>
+    <script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"1","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+</div>
+
+<!-- 上一篇/下一篇 -->
+
+<div class="article-nav clearfix">
+    
+    <span class="prev fl">
+        上一篇<br >
+        <a href="/2017/12/13/数据仓库相关术语/">
+            
+                数据仓库相关术语
+            
+        </a>
+    </span>
+    
+
+    
+    <span class="next fr">
+        下一篇<br >
+        <a href="/2017/11/22/GitHub_hexo_travis/">
+            
+                hexo github travis_ci 构建博客
+            
+        </a>
+    </span>
+    
+</div>
+
+<!-- 文章评论 -->
+
+    <div id="comments" class="comments cloud-tie-wrapper"></div>
+    <script>
+    var cloudTieConfig = {
+      url: document.location.href, 
+      sourceId: "perl",
+      productKey: "c06bb9930e6f4b38a9997cb9bd17aba5",
+      target: "comments"
+    };
+    var yunManualLoad = true;
+    Tie.loader("aHR0cHM6Ly9hcGkuZ2VudGllLjE2My5jb20vcGMvbGl2ZXNjcmlwdC5odG1s", true);
+    </script>
+
+            </div>
+
+        </section>
+        <!-- 侧栏部分 -->
+<aside class="sidebar">
+    <section class="widget">
+        <h3 class="widget-hd"><strong>文章分类</strong></h3>
+        <!-- 文章分类 -->
+<ul class="widget-bd">
+    
+    <li>
+        <a href="/categories/github/">github</a>
+        <span class="badge">(1)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/calcite/">calcite</a>
+        <span class="badge">(1)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/数据理论/">数据理论</a>
+        <span class="badge">(2)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/ETL/">ETL</a>
+        <span class="badge">(1)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/元数据/">元数据</a>
+        <span class="badge">(1)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/nodejs/">nodejs</a>
+        <span class="badge">(5)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/开源/">开源</a>
+        <span class="badge">(2)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/tool/">tool</a>
+        <span class="badge">(1)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/Oracle/">Oracle</a>
+        <span class="badge">(1)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/perl/">perl</a>
+        <span class="badge">(1)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/Web技术/">Web技术</a>
+        <span class="badge">(1)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/数据治理/">数据治理</a>
+        <span class="badge">(1)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/本体论/">本体论</a>
+        <span class="badge">(1)</span>
+    </li>
+    
+</ul>
+    </section>
+
+    
+    <section class="widget">
+        <h3 class="widget-hd"><strong>热门标签</strong></h3>
+        <!-- 文章标签 -->
+<div class="widget-bd tag-wrap">
+  
+    <a class="tag-item" href="/tags/其他/" title="其他">其他 (3)</a>
+  
+    <a class="tag-item" href="/tags/常用/" title="常用">常用 (2)</a>
+  
+    <a class="tag-item" href="/tags/ETL/" title="ETL">ETL (1)</a>
+  
+    <a class="tag-item" href="/tags/调度/" title="调度">调度 (1)</a>
+  
+    <a class="tag-item" href="/tags/元数据交换/" title="元数据交换">元数据交换 (1)</a>
+  
+    <a class="tag-item" href="/tags/js/" title="js">js (3)</a>
+  
+    <a class="tag-item" href="/tags/esayui/" title="esayui">esayui (2)</a>
+  
+    <a class="tag-item" href="/tags/工具/" title="工具">工具 (1)</a>
+  
+    <a class="tag-item" href="/tags/drill/" title="drill">drill (1)</a>
+  
+    <a class="tag-item" href="/tags/SQL/" title="SQL">SQL (1)</a>
+  
+    <a class="tag-item" href="/tags/理论/" title="理论">理论 (3)</a>
+  
+</div>
+    </section>
+    
+
+    
+
+    
+    <!-- 友情链接 -->
+    <section class="widget">
+        <h3 class="widget-hd"><strong>友情链接</strong></h3>
+        <!-- 文章分类 -->
+<ul class="widget-bd">
+    
+        <li>
+            <a href="http://www.idataskys.com/" target="_blank" title="数据挖掘博客">Miller博客</a>
+        </li>
+    
+</ul>
+    </section>
+    
+</aside>
+<!-- / 侧栏部分 -->
+    </div>
+
+    <!-- 博客底部 -->
+    <footer class="footer">
+    &copy;
+    
+        2016-2023
+    
+
+    <a href="/">datacl.top Loves You</a>
+    <br/>
+    <sapn>备案号： </span><a href="https://beian.miit.gov.cn">蜀ICP备17003326号-1</a>
+</footer>
+<div class="back-to-top" id="JELON__backToTop" title="返回顶部">返回顶部</div>
+<!-- 添加百度自动推送 -->
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+    <!--博客js脚本 -->
+    <!-- 这里放网站js脚本 -->
+<script src="/js/main.js"></script>
+</body>
+</html>

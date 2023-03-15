@@ -1,0 +1,407 @@
+<!doctype html>
+<html lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=11,IE=10,IE=9,IE=8">
+    <meta name="baidu-site-verification" content="dIcXMeY8Ya">
+    
+    <title>drill安装和使用 | 数据酷</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+    <meta name="keywords" content="数据库, 数据仓库, 数据分析, 数据挖掘, 数据整合">
+    <meta name="description" content="数据科学">
+
+    
+    <link rel="alternative" href="/atom.xml" title="数据酷" type="application/atom+xml">
+    
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    
+    <link rel="stylesheet" href="/css/style.css">
+    <!--[if lt IE 9]>
+    <script src="/js/html5.js"></script>
+    <![endif]-->
+    
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "//hm.baidu.com/hm.js?fd459238242776d173cdc64918fb32f2";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+
+    
+    <script>var yunModuleEnv = true;</script>
+    <script src="https://img1.cache.netease.com/f2e/tie/yun/sdk/loader.js"></script>
+    
+</head>
+</html>
+<body class="home">
+    <!--[if lt IE 9]>
+    <div class="browsehappy">
+        当前网页 <strong>不支持</strong>
+        你正在使用的浏览器. 为了正常的访问, 请 <a href="http://browsehappy.com/">升级你的浏览器</a>.
+    </div>
+    <![endif]-->
+
+    <!-- 博客头部 -->
+    <header class="header">
+    <section class="container header-main">
+        <div class="logo">
+            <a href="/">
+                <div class="cover">
+                    <span class="name">数据酷</span>
+                    <span class="description">工欲善其事必先利其器</span>
+                </div>
+            </a>
+        </div>
+        <div class="dropnav icon-paragraph-justify" id="JELON__btnDropNav"></div>
+        <ul class="menu hidden" id="JELON__menu">
+            
+            <li rel="/2019/11/26/drill安装和使用/index.html" class="item ">
+                <a href="/" title="首页" class="icon-home">&nbsp;首页</a>
+            </li>
+            
+            <li rel="/2019/11/26/drill安装和使用/index.html" class="item ">
+                <a href="/comment/" title="留言" class="icon-comment">&nbsp;留言</a>
+            </li>
+            
+        </ul>
+        <div class="profile clearfix">
+            <div class="feeds fl">
+                
+                
+                <p class="links">
+                    
+                </p>
+                <p class="sns">
+                    
+                    <a href="javascript: void(0);" class="wechat">
+                        <b>■</b>
+                        公众号
+                        <span class="popover">
+                            <img src="/img/wechat_mp.jpg" width="120" height="120" alt="我的微信订阅号">
+                            <i class="arrow"></i>
+                        </span>
+                    </a>
+                </p>
+                
+            </div>
+            <div class="avatar fr">
+                <img src="/img/jelon.jpg" alt="avatar" title="Datacl" >
+            </div>
+        </div>
+    </section>
+</header>
+
+
+    <!-- 博客正文 -->
+    <div class="container body clearfix">
+        <section class="content">
+            <div class="content-main widget">
+                <!-- 文章页 -->
+<!-- 文章 -->
+<article class="post article">
+    <header class="text-center">
+        <h3 class="post-title"><span>drill安装和使用</span></h3>
+    </header>
+    <p class="post-meta text-center">
+        杨金坤 发表于
+        <time datetime="2019-11-25T16:00:00.000Z">2019-11-26</time>
+    </p>
+    <div class="post-content">
+        <h1 id="drill-安装与使用"><a href="#drill-安装与使用" class="headerlink" title="drill 安装与使用"></a>drill 安装与使用</h1><h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><h3 id="1-下载二进制压缩包"><a href="#1-下载二进制压缩包" class="headerlink" title="1.下载二进制压缩包"></a>1.下载二进制压缩包</h3><p><a href="https://note.youdao.com/" target="_blank" rel="noopener">http://drill.apache.org/download/</a></p>
+<h3 id="2-安装环境"><a href="#2-安装环境" class="headerlink" title="2.安装环境"></a>2.安装环境</h3><ol>
+<li>独立运行：JDK,JAVA_HOME</li>
+<li>集群运行：JDK，zookeeper</li>
+</ol>
+<h3 id="3-独立运行"><a href="#3-独立运行" class="headerlink" title="3.独立运行"></a>3.独立运行</h3><ul>
+<li>压缩包解压</li>
+<li>不需要任何配置，到bin目录下执行</li>
+<li>不要配置drill-override.conf</li>
+<li>不能设置用户权限</li>
+<li>Linux系统</li>
+<li>设置hostname，不要使用localhost，不使用127.0.0.1</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">drill-embedded.bat</span><br></pre></td></tr></table></figure>
+<h3 id="4-集群运行"><a href="#4-集群运行" class="headerlink" title="4.集群运行"></a>4.集群运行</h3><ul>
+<li>linux系统</li>
+<li>设置hostname</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# hostnamectl set-hostname youhostname</span><br><span class="line">[root@localhost ~]# cat  /etc/sysconfig/network</span><br><span class="line">NETWORKING=yes #表示系统是否使用网络，一般设置为yes。如果设为no，则不能使用网络。</span><br><span class="line">HOSTNAME=youhostname #设置本机的主机名，这里设置的主机名要和/etc/hosts中设置的主机名对应</span><br><span class="line">GATEWAY=192.168.78.2 #设置本机连接的网关的IP地址。</span><br><span class="line">[root@localhost ~]# cat /etc/hosts</span><br><span class="line">#127.0.0.1   localhost localhost.localdomain localhost4 localhost4.localdomain4</span><br><span class="line">#::1         localhost localhost.localdomain localhost6 localhost6.localdomain6</span><br><span class="line">#192.168.78.131 localhost localhost.localdomain localhost4 localhost4.localdomain4</span><br><span class="line">#127.0.1.1 abc</span><br><span class="line">#127.0.0.1 abc</span><br><span class="line">192.168.78.131 abc</span><br><span class="line">[root@localhost ~]# reboot</span><br></pre></td></tr></table></figure>
+<ul>
+<li>安装zookeeper</li>
+<li><ul>
+<li>下载<a href="https://note.youdao.com/" target="_blank" rel="noopener">https://www.apache.org/dyn/closer.cgi/zookeeper/</a></li>
+</ul>
+</li>
+<li><ul>
+<li>解压二级制压缩包</li>
+</ul>
+</li>
+<li><ul>
+<li>添加配置文件conf/zoo.cfg</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[root@abc conf]# cat zoo.cfg </span><br><span class="line">tickTime=2000</span><br><span class="line">dataDir=/opt/apache-zookeeper-3.5.5-bin/data</span><br><span class="line">server.1=youhostname:2888:3888</span><br><span class="line">clientPort=2181</span><br></pre></td></tr></table></figure>
+<ul>
+<li><ul>
+<li>启动与连接</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">bin/zkServer.sh start</span><br><span class="line">bin/zkCli.sh -server youhostname:2181</span><br></pre></td></tr></table></figure>
+<ul>
+<li>配置drill-override.conf</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">drill.exec: &#123;</span><br><span class="line">  cluster-id: &quot;drillbits1&quot;,</span><br><span class="line">  zk.connect: &quot;192.168.78.131:2181&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>启停drillbit</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">drillbit.sh [--config &lt;conf-dir&gt;] (start|stop|graceful_stop|status|restart|autorestart)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>访问web，测试用户，<a href="http://192.168.78.131:8047/" target="_blank" rel="noopener">http://192.168.78.131:8047/</a><h3 id="5-使用libpam用户认证"><a href="#5-使用libpam用户认证" class="headerlink" title="5. 使用libpam用户认证"></a>5. 使用libpam用户认证</h3></li>
+<li>linux系统，集群模式下</li>
+<li>登录drill-localhost，SVN用户是linux系统用户，设置为管理员</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">[root@abc bin]# ./drill-localhost</span><br><span class="line">Apache Drill 1.16.0</span><br><span class="line">&quot;A Drill in the hand is better than two in the bush.&quot;</span><br><span class="line">apache drill&gt; alter system set security.admin.users = &apos;svn&apos;;</span><br><span class="line">+------+-------------------------------+</span><br><span class="line">|  ok  |            summary            |</span><br><span class="line">+------+-------------------------------+</span><br><span class="line">| true | security.admin.users updated. |</span><br><span class="line">+------+-------------------------------+</span><br><span class="line">1 row selected (1.397 seconds)</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>停止drillbit，修改drill-override.conf</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">drill.exec: &#123;</span><br><span class="line">  cluster-id: &quot;drillbits1&quot;,</span><br><span class="line">  zk.connect: &quot;192.168.78.131:2181&quot;,</span><br><span class="line">  impersonation: &#123;                                   </span><br><span class="line">         enabled: true,                             </span><br><span class="line">         max_chained_user_hops: 3                     </span><br><span class="line">       &#125;,</span><br><span class="line">  security.user.auth: &#123;</span><br><span class="line">         enabled: true,</span><br><span class="line">         packages += &quot;org.apache.drill.exec.rpc.user.security&quot;,</span><br><span class="line">         impl: &quot;pam4j&quot;,</span><br><span class="line">         pam_profiles: [ &quot;sudo&quot;, &quot;login&quot; ],</span><br><span class="line">   encryption.sasl.enabled: true,</span><br><span class="line">   encryption.sasl.max_wrapped_size: 65536</span><br><span class="line">  &#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>访问web，测试用户，<a href="http://192.168.78.131:8047/" target="_blank" rel="noopener">http://192.168.78.131:8047/</a></p>
+</li>
+<li>添加rdbms数据源</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;type&quot;: &quot;jdbc&quot;,</span><br><span class="line">  &quot;driver&quot;: &quot;com.mysql.jdbc.Driver&quot;,</span><br><span class="line">  &quot;url&quot;: &quot;jdbc:mysql://192.168.78.1:3306/dqmm?useUnicode=true&amp;characterEncoding=UTF-8&amp;remarks=true&amp;useInformationSchema=true&quot;,</span><br><span class="line">  &quot;username&quot;: &quot;root&quot;,</span><br><span class="line">  &quot;password&quot;: &quot;root&quot;,</span><br><span class="line">  &quot;caseInsensitiveTableNames&quot;: true,</span><br><span class="line">  &quot;enabled&quot;: true</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>执行查询</li>
+</ul>
+
+    </div>
+    <p class="post-meta">
+        <span class="post-cat">分类：
+            <a class="cat-link" href="/categories/开源/">开源</a>
+        </span>
+        <span class="post-tags">
+            标签：
+            
+    
+        <a href="/tags/drill/" title="drill">drill</a>
+    
+
+        </span>
+    </p>
+</article>
+<div class="article-share clearfix text-center">
+    <div class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more"></a><a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a><a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a><a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网"></a><a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a></div>
+    <script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"1","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+</div>
+
+<!-- 上一篇/下一篇 -->
+
+<div class="article-nav clearfix">
+    
+    <span class="prev fl">
+        上一篇<br >
+        <a href="/2020/06/12/Calcite SQL解析与验证/">
+            
+                Calcite SQL解析与验证
+            
+        </a>
+    </span>
+    
+
+    
+    <span class="next fr">
+        下一篇<br >
+        <a href="/2019/05/10/centos7搭建superset数据平台/">
+            
+                centos7搭建superset数据平台
+            
+        </a>
+    </span>
+    
+</div>
+
+<!-- 文章评论 -->
+
+    <div id="comments" class="comments cloud-tie-wrapper"></div>
+    <script>
+    var cloudTieConfig = {
+      url: document.location.href, 
+      sourceId: "drill安装和使用",
+      productKey: "c06bb9930e6f4b38a9997cb9bd17aba5",
+      target: "comments"
+    };
+    var yunManualLoad = true;
+    Tie.loader("aHR0cHM6Ly9hcGkuZ2VudGllLjE2My5jb20vcGMvbGl2ZXNjcmlwdC5odG1s", true);
+    </script>
+
+            </div>
+
+        </section>
+        <!-- 侧栏部分 -->
+<aside class="sidebar">
+    <section class="widget">
+        <h3 class="widget-hd"><strong>文章分类</strong></h3>
+        <!-- 文章分类 -->
+<ul class="widget-bd">
+    
+    <li>
+        <a href="/categories/github/">github</a>
+        <span class="badge">(1)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/calcite/">calcite</a>
+        <span class="badge">(1)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/数据理论/">数据理论</a>
+        <span class="badge">(2)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/ETL/">ETL</a>
+        <span class="badge">(1)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/元数据/">元数据</a>
+        <span class="badge">(1)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/nodejs/">nodejs</a>
+        <span class="badge">(5)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/开源/">开源</a>
+        <span class="badge">(2)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/tool/">tool</a>
+        <span class="badge">(1)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/Oracle/">Oracle</a>
+        <span class="badge">(1)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/perl/">perl</a>
+        <span class="badge">(1)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/Web技术/">Web技术</a>
+        <span class="badge">(1)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/数据治理/">数据治理</a>
+        <span class="badge">(1)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/本体论/">本体论</a>
+        <span class="badge">(1)</span>
+    </li>
+    
+</ul>
+    </section>
+
+    
+    <section class="widget">
+        <h3 class="widget-hd"><strong>热门标签</strong></h3>
+        <!-- 文章标签 -->
+<div class="widget-bd tag-wrap">
+  
+    <a class="tag-item" href="/tags/其他/" title="其他">其他 (3)</a>
+  
+    <a class="tag-item" href="/tags/常用/" title="常用">常用 (2)</a>
+  
+    <a class="tag-item" href="/tags/ETL/" title="ETL">ETL (1)</a>
+  
+    <a class="tag-item" href="/tags/调度/" title="调度">调度 (1)</a>
+  
+    <a class="tag-item" href="/tags/元数据交换/" title="元数据交换">元数据交换 (1)</a>
+  
+    <a class="tag-item" href="/tags/js/" title="js">js (3)</a>
+  
+    <a class="tag-item" href="/tags/esayui/" title="esayui">esayui (2)</a>
+  
+    <a class="tag-item" href="/tags/工具/" title="工具">工具 (1)</a>
+  
+    <a class="tag-item" href="/tags/drill/" title="drill">drill (1)</a>
+  
+    <a class="tag-item" href="/tags/SQL/" title="SQL">SQL (1)</a>
+  
+    <a class="tag-item" href="/tags/理论/" title="理论">理论 (3)</a>
+  
+</div>
+    </section>
+    
+
+    
+
+    
+    <!-- 友情链接 -->
+    <section class="widget">
+        <h3 class="widget-hd"><strong>友情链接</strong></h3>
+        <!-- 文章分类 -->
+<ul class="widget-bd">
+    
+        <li>
+            <a href="http://www.idataskys.com/" target="_blank" title="数据挖掘博客">Miller博客</a>
+        </li>
+    
+</ul>
+    </section>
+    
+</aside>
+<!-- / 侧栏部分 -->
+    </div>
+
+    <!-- 博客底部 -->
+    <footer class="footer">
+    &copy;
+    
+        2016-2023
+    
+
+    <a href="/">datacl.top Loves You</a>
+    <br/>
+    <sapn>备案号： </span><a href="https://beian.miit.gov.cn">蜀ICP备17003326号-1</a>
+</footer>
+<div class="back-to-top" id="JELON__backToTop" title="返回顶部">返回顶部</div>
+<!-- 添加百度自动推送 -->
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+    <!--博客js脚本 -->
+    <!-- 这里放网站js脚本 -->
+<script src="/js/main.js"></script>
+</body>
+</html>

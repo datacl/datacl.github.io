@@ -1,0 +1,358 @@
+<!doctype html>
+<html lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=11,IE=10,IE=9,IE=8">
+    <meta name="baidu-site-verification" content="dIcXMeY8Ya">
+    
+    <title>ETL策略 | 数据酷</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+    <meta name="keywords" content="数据库, 数据仓库, 数据分析, 数据挖掘, 数据整合">
+    <meta name="description" content="数据科学">
+
+    
+    <link rel="alternative" href="/atom.xml" title="数据酷" type="application/atom+xml">
+    
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    
+    <link rel="stylesheet" href="/css/style.css">
+    <!--[if lt IE 9]>
+    <script src="/js/html5.js"></script>
+    <![endif]-->
+    
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "//hm.baidu.com/hm.js?fd459238242776d173cdc64918fb32f2";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+
+    
+    <script>var yunModuleEnv = true;</script>
+    <script src="https://img1.cache.netease.com/f2e/tie/yun/sdk/loader.js"></script>
+    
+</head>
+</html>
+<body class="home">
+    <!--[if lt IE 9]>
+    <div class="browsehappy">
+        当前网页 <strong>不支持</strong>
+        你正在使用的浏览器. 为了正常的访问, 请 <a href="http://browsehappy.com/">升级你的浏览器</a>.
+    </div>
+    <![endif]-->
+
+    <!-- 博客头部 -->
+    <header class="header">
+    <section class="container header-main">
+        <div class="logo">
+            <a href="/">
+                <div class="cover">
+                    <span class="name">数据酷</span>
+                    <span class="description">工欲善其事必先利其器</span>
+                </div>
+            </a>
+        </div>
+        <div class="dropnav icon-paragraph-justify" id="JELON__btnDropNav"></div>
+        <ul class="menu hidden" id="JELON__menu">
+            
+            <li rel="/2017/12/19/ETL算法/index.html" class="item ">
+                <a href="/" title="首页" class="icon-home">&nbsp;首页</a>
+            </li>
+            
+            <li rel="/2017/12/19/ETL算法/index.html" class="item ">
+                <a href="/comment/" title="留言" class="icon-comment">&nbsp;留言</a>
+            </li>
+            
+        </ul>
+        <div class="profile clearfix">
+            <div class="feeds fl">
+                
+                
+                <p class="links">
+                    
+                </p>
+                <p class="sns">
+                    
+                    <a href="javascript: void(0);" class="wechat">
+                        <b>■</b>
+                        公众号
+                        <span class="popover">
+                            <img src="/img/wechat_mp.jpg" width="120" height="120" alt="我的微信订阅号">
+                            <i class="arrow"></i>
+                        </span>
+                    </a>
+                </p>
+                
+            </div>
+            <div class="avatar fr">
+                <img src="/img/jelon.jpg" alt="avatar" title="Datacl" >
+            </div>
+        </div>
+    </section>
+</header>
+
+
+    <!-- 博客正文 -->
+    <div class="container body clearfix">
+        <section class="content">
+            <div class="content-main widget">
+                <!-- 文章页 -->
+<!-- 文章 -->
+<article class="post article">
+    <header class="text-center">
+        <h3 class="post-title"><span>ETL策略</span></h3>
+    </header>
+    <p class="post-meta text-center">
+        杨金坤 发表于
+        <time datetime="2017-12-18T16:00:00.000Z">2017-12-19</time>
+    </p>
+    <div class="post-content">
+        <h1 id="ETL策略"><a href="#ETL策略" class="headerlink" title="ETL策略"></a>ETL策略</h1><p>分别从源数据，数据接口，ETL算法，数据仓库特性，解释涉及到的相关术语。</p>
+<h2 id="1-源数据"><a href="#1-源数据" class="headerlink" title="1.源数据"></a>1.源数据</h2><h3 id="流水事件表"><a href="#流水事件表" class="headerlink" title="流水事件表"></a>流水事件表</h3><p>记录交易或事件的发生，在源系统中只会不断新增，不会被修改和删除。</p>
+<h3 id="状态表"><a href="#状态表" class="headerlink" title="状态表"></a>状态表</h3><p>记录实体信息的状态，反应属性或分类的变化。在源系统中会被新增，修改，删除。</p>
+<h3 id="代码表"><a href="#代码表" class="headerlink" title="代码表"></a>代码表</h3><p>用于记录数据代码和参数及其含义。一般不会发生变化。</p>
+<h2 id="2-接口形式"><a href="#2-接口形式" class="headerlink" title="2.接口形式"></a>2.接口形式</h2><h3 id="全量"><a href="#全量" class="headerlink" title="全量"></a>全量</h3><p>数据文件为全表信息，包含全包全表所有记录。</p>
+<h3 id="增量"><a href="#增量" class="headerlink" title="增量"></a>增量</h3><p>数据文件为表的变化信息，包含数据表的新增和更新部分。</p>
+<h3 id="带删除的增量"><a href="#带删除的增量" class="headerlink" title="带删除的增量"></a>带删除的增量</h3><p>数据文件为表的变化信息，包含数据表的新增和更新部分以及带删除标识的数据。</p>
+<h2 id="3-ETL算法"><a href="#3-ETL算法" class="headerlink" title="3.ETL算法"></a>3.ETL算法</h2><h3 id="insert-追加"><a href="#insert-追加" class="headerlink" title="insert 追加"></a>insert 追加</h3><p>取得接口形式为增量的数据文件，一般为流水事件表提供，直接追加到目标表，不存在更新。</p>
+<h3 id="merge-更新"><a href="#merge-更新" class="headerlink" title="merge 更新"></a>merge 更新</h3><p>取得接口形式为增量的数据文件，一般为状态表提供，需要更新目标记录并插入新增记录。</p>
+<h3 id="truncate-重载"><a href="#truncate-重载" class="headerlink" title="truncate 重载"></a>truncate 重载</h3><p>取得接口形式为全量的数据文件，一般为状态表提供，清空目标表插入所有数据。</p>
+<h3 id="zipper-拉链"><a href="#zipper-拉链" class="headerlink" title="zipper 拉链"></a>zipper 拉链</h3><p>取得接口形式为增量的数据文件，一般为状态表提供，需要保留数据的变化历史值。数据呈现出时间连贯性，源数据始终能在拉链表提取，源数据主键的的记录能在拉链表提出历史状态，能够在拉链表中提取处制定日期有效的数据。</p>
+<h4 id="开链"><a href="#开链" class="headerlink" title="开链"></a>开链</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">源表                               拉链表</span><br><span class="line"></span><br><span class="line">学号 学院 年级 班级 专业 方向          学号 学院 年级 班级 专业 方向 生效日期   失效日期</span><br><span class="line">11   11  11   11  11  1            11   11  11   11  11  1   20171219  99991231</span><br></pre></td></tr></table></figure>
+<h4 id="关链"><a href="#关链" class="headerlink" title="关链"></a>关链</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">源表 （学号22记录20171231被删除）      拉链表</span><br><span class="line"></span><br><span class="line">学号 学院 年级 班级 专业 方向          学号 学院 年级 班级 专业 方向 生效日期   失效日期</span><br><span class="line">11   11  11   11  11  1            11   11  11   11  11  1   20171219  99991231</span><br><span class="line">22   11  11   11  11  1            22   11  11   11  11  1   20171219  20171231</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">源表 （学号11记录2018010被修改）      拉链表</span><br><span class="line"></span><br><span class="line">学号 学院 年级 班级 专业 方向          学号 学院 年级 班级 专业 方向 生效日期   失效日期</span><br><span class="line">11   11  22   11  11  1            11   11  11   11  11  1   20171219  20180101</span><br><span class="line">22   11  11   11  11  1            22   11  11   11  11  1   20171219  20171231</span><br><span class="line">                                   11   11  22   11  11  1   20180101  99991231</span><br></pre></td></tr></table></figure>
+<h2 id="4-数据仓库ETL特性"><a href="#4-数据仓库ETL特性" class="headerlink" title="4.数据仓库ETL特性"></a>4.数据仓库ETL特性</h2><h3 id="逻辑删除"><a href="#逻辑删除" class="headerlink" title="逻辑删除"></a>逻辑删除</h3><p>不直接删除或被源系统更新的数据，而是在目标表新增逻辑删除字段，用删除代码标记记录被删除（更新）。</p>
+<h3 id="数据拉链"><a href="#数据拉链" class="headerlink" title="数据拉链"></a>数据拉链</h3><p>数据删除-拉链表关链删除记录<br>数据新增-拉链表开链新增记录<br>数据更新-拉镖表关链旧记录，开链新记录</p>
+<h3 id="获取拉链表有效记录"><a href="#获取拉链表有效记录" class="headerlink" title="获取拉链表有效记录"></a>获取拉链表有效记录</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select * from table where 失效日期 = &apos;99991231&apos;</span><br></pre></td></tr></table></figure>
+<h3 id="获取拉链表20171217有效记录"><a href="#获取拉链表20171217有效记录" class="headerlink" title="获取拉链表20171217有效记录"></a>获取拉链表20171217有效记录</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select * from table where &apos;20171217&apos; between 生效日期 and 失效日期</span><br></pre></td></tr></table></figure>
+<h3 id="获取拉链表20171217新增和更新数据"><a href="#获取拉链表20171217新增和更新数据" class="headerlink" title="获取拉链表20171217新增和更新数据"></a>获取拉链表20171217新增和更新数据</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select * from table where 生效日期 = &apos;20171217&apos;</span><br></pre></td></tr></table></figure>
+<h3 id="获取拉链表20171217被更新和删除数据"><a href="#获取拉链表20171217被更新和删除数据" class="headerlink" title="获取拉链表20171217被更新和删除数据"></a>获取拉链表20171217被更新和删除数据</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select * from table where 失效日期 = &apos;20171217&apos;</span><br></pre></td></tr></table></figure>
+    </div>
+    <p class="post-meta">
+        <span class="post-cat">分类：
+            <a class="cat-link" href="/categories/数据理论/">数据理论</a>
+        </span>
+        <span class="post-tags">
+            标签：
+            
+    
+        <a href="/tags/ETL/" title="ETL">ETL</a>
+    
+
+        </span>
+    </p>
+</article>
+<div class="article-share clearfix text-center">
+    <div class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more"></a><a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a><a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a><a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网"></a><a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a></div>
+    <script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"1","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+</div>
+
+<!-- 上一篇/下一篇 -->
+
+<div class="article-nav clearfix">
+    
+    <span class="prev fl">
+        上一篇<br >
+        <a href="/2017/12/27/ETL调度/">
+            
+                ETL调度，调度的相关术语
+            
+        </a>
+    </span>
+    
+
+    
+    <span class="next fr">
+        下一篇<br >
+        <a href="/2017/12/13/数据仓库相关术语/">
+            
+                数据仓库相关术语
+            
+        </a>
+    </span>
+    
+</div>
+
+<!-- 文章评论 -->
+
+    <div id="comments" class="comments cloud-tie-wrapper"></div>
+    <script>
+    var cloudTieConfig = {
+      url: document.location.href, 
+      sourceId: "ETL算法",
+      productKey: "c06bb9930e6f4b38a9997cb9bd17aba5",
+      target: "comments"
+    };
+    var yunManualLoad = true;
+    Tie.loader("aHR0cHM6Ly9hcGkuZ2VudGllLjE2My5jb20vcGMvbGl2ZXNjcmlwdC5odG1s", true);
+    </script>
+
+            </div>
+
+        </section>
+        <!-- 侧栏部分 -->
+<aside class="sidebar">
+    <section class="widget">
+        <h3 class="widget-hd"><strong>文章分类</strong></h3>
+        <!-- 文章分类 -->
+<ul class="widget-bd">
+    
+    <li>
+        <a href="/categories/github/">github</a>
+        <span class="badge">(1)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/calcite/">calcite</a>
+        <span class="badge">(1)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/数据理论/">数据理论</a>
+        <span class="badge">(2)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/ETL/">ETL</a>
+        <span class="badge">(1)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/元数据/">元数据</a>
+        <span class="badge">(1)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/nodejs/">nodejs</a>
+        <span class="badge">(5)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/开源/">开源</a>
+        <span class="badge">(2)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/tool/">tool</a>
+        <span class="badge">(1)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/Oracle/">Oracle</a>
+        <span class="badge">(1)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/perl/">perl</a>
+        <span class="badge">(1)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/Web技术/">Web技术</a>
+        <span class="badge">(1)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/数据治理/">数据治理</a>
+        <span class="badge">(1)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/本体论/">本体论</a>
+        <span class="badge">(1)</span>
+    </li>
+    
+</ul>
+    </section>
+
+    
+    <section class="widget">
+        <h3 class="widget-hd"><strong>热门标签</strong></h3>
+        <!-- 文章标签 -->
+<div class="widget-bd tag-wrap">
+  
+    <a class="tag-item" href="/tags/其他/" title="其他">其他 (3)</a>
+  
+    <a class="tag-item" href="/tags/常用/" title="常用">常用 (2)</a>
+  
+    <a class="tag-item" href="/tags/ETL/" title="ETL">ETL (1)</a>
+  
+    <a class="tag-item" href="/tags/调度/" title="调度">调度 (1)</a>
+  
+    <a class="tag-item" href="/tags/元数据交换/" title="元数据交换">元数据交换 (1)</a>
+  
+    <a class="tag-item" href="/tags/js/" title="js">js (3)</a>
+  
+    <a class="tag-item" href="/tags/esayui/" title="esayui">esayui (2)</a>
+  
+    <a class="tag-item" href="/tags/工具/" title="工具">工具 (1)</a>
+  
+    <a class="tag-item" href="/tags/drill/" title="drill">drill (1)</a>
+  
+    <a class="tag-item" href="/tags/SQL/" title="SQL">SQL (1)</a>
+  
+    <a class="tag-item" href="/tags/理论/" title="理论">理论 (3)</a>
+  
+</div>
+    </section>
+    
+
+    
+
+    
+    <!-- 友情链接 -->
+    <section class="widget">
+        <h3 class="widget-hd"><strong>友情链接</strong></h3>
+        <!-- 文章分类 -->
+<ul class="widget-bd">
+    
+        <li>
+            <a href="http://www.idataskys.com/" target="_blank" title="数据挖掘博客">Miller博客</a>
+        </li>
+    
+</ul>
+    </section>
+    
+</aside>
+<!-- / 侧栏部分 -->
+    </div>
+
+    <!-- 博客底部 -->
+    <footer class="footer">
+    &copy;
+    
+        2016-2023
+    
+
+    <a href="/">datacl.top Loves You</a>
+    <br/>
+    <sapn>备案号： </span><a href="https://beian.miit.gov.cn">蜀ICP备17003326号-1</a>
+</footer>
+<div class="back-to-top" id="JELON__backToTop" title="返回顶部">返回顶部</div>
+<!-- 添加百度自动推送 -->
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+    <!--博客js脚本 -->
+    <!-- 这里放网站js脚本 -->
+<script src="/js/main.js"></script>
+</body>
+</html>

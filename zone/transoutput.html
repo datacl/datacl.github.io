@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+
+    <script src="xlsx.full.min.js"></script>
+    <title></title>
+</head>
+<style>
+    #demodiv{
+        text-align: center;
+    }
+    #demodiv>input{
+        outline: none;
+        border: 1px red solid;
+        width: 300px;
+        height: 50px;
+        font-size: 30px;
+        padding-left: 10px;
+    }
+</style>
+<body>
+    <p>1.先上传标签信息xlsm文件</p>
+    <p>2.再上传需要上机的output.xml文件</p>
+    <p><input type="file" name="xlfile" id="xlf" /> 上传xlsm</p>
+    <p><input type="file" name="xmlfile" id="xmlf" /> 上传output.xml</p>
+</body>
+<script>
+var list = []
+
+function addLis() {
+    var xlf = document.getElementById('xlf');
+    if(xlf.addEventListener) xlf.addEventListener('change', handleFile, false);
+
+    var xmlf = document.getElementById('xmlf');
+    if(xmlf.addEventListener) xmlf.addEventListener('change', xmlhandleFile, false);
+}
+
+addLis();
+
+function xmlhandleFile(e) {
+    var files = e.target.files;
+    var f = files[0];
+    xmlreadFile(f);
+}
+
+function xmlreadFile(file) {
+
+    var name = file.name;
+    var reader = new FileReader();
+    reader.onload = function (e) {
+        // var data = utf8encode(e.target.result);
+        var data = e.target.result;
+        list.forEach(x => {
+            data = data.replace('ID="'+x.new_id+'"','ID="'+x.qrcode+'"')
+            // data = data.replace(x.new_id,x.qrcode)
+        });
+        console.log(data);
+        savefile(new Blob([data]),{type: "text/plain;charset=utf-8"})
+    };
+    reader.readAsText(file,'UTF8');
+}
+
+function savefile(blob) {
+    if (window.navigator && window.navigator.msSaveOrOpenBlob) {
+        // IE浏览器
+        window.navigator.msSaveOrOpenBlob(blob, fileName);
+    } else {
+        // Non-IE (chrome, firefox etc.)
+        let url = window.URL.createObjectURL(blob)
+        
+        var link = document.createElement("a");
+        link.href = url;
+        link.download = decodeURI('output_new.xml');
+        link.click();
+        window.URL.revokeObjectURL(link.href);
+    }
+}
+
+function handleFile(e) {
+    var files = e.target.files;
+    var f = files[0];
+    readFile(f);
+}
+
+function readFile(file) {
+
+    var name = file.name;
+    var reader = new FileReader();
+    reader.onload = function (e) {
+        var data = e.target.result;
+        var wb = XLSX.read(data, { type: "binary" });
+        var rowcnt = wb.Sheets['Label']['!ref'].split(':')[1].match(/\d+/)[0];
+        var id_str = []
+        for (i = 1; i <= rowcnt; i++) { 
+            var src_id = wb.Sheets['Label']['A'+i]['v']
+            var new_id = src_id.match(/[_@]\d+/g)[0]+src_id.match(/[_@]\d+/g)[3]+src_id.match(/[_@]\d+/g)[4]
+            var order_num = wb.Sheets['Label']['C'+i]['v']
+            var box_num = src_id.match(/[_@]\d+/g)[1]+src_id.match(/[_@]\d+/g)[2]
+            var pord_num = wb.Sheets['Label']['F'+i]['v']
+            id_str.push({
+                            src_id : src_id,
+                            new_id : new_id.replace(/^@/,''),
+                            qrcode : order_num.replace(/^_/,'')+box_num+pord_num,
+                        }
+                        )
+            list = id_str
+        }
+        console.log(wb);
+        console.log(wb.Sheets['Label']);
+        console.log(wb.Sheets['Label']['!ref']);
+        console.log(rowcnt);
+        console.log(id_str);
+    };
+    reader.readAsBinaryString(file);
+}
+</script>
+</html>
