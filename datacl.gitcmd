@@ -16,4 +16,4 @@ git init
 git add .
 git commit -m "Update docs"
 git push --force --quiet "https://github.com/datacl/datacl.github.io.git" master:master
-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
+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
