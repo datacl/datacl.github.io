@@ -1,16 +1,15 @@
 <!DOCTYPE html>
-<html>
-<head lang="en">
-    <meta charset="UTF-8">
+<!-- saved from url=(0044)https://www.datacl.top/zone/transoutput.html -->
+<html><head lang="en"><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
 
     <script src="xlsx.full.min.js"></script>
     <title></title>
-</head>
 <style>
-    #demodiv{
-        text-align: center;
+    body {
+        font-size: 50px;
     }
-    #demodiv>input{
+    input {
         outline: none;
         border: 1px red solid;
         width: 300px;
@@ -18,15 +17,19 @@
         font-size: 30px;
         padding-left: 10px;
     }
-</style>
+</style></head>
+
 <body>
     <p>1.先上传标签信息xlsm文件</p>
-    <p>2.再上传需要上机的output.xml文件</p>
-    <p><input type="file" name="xlfile" id="xlf" /> 上传xlsm</p>
-    <p><input type="file" name="xmlfile" id="xmlf" /> 上传output.xml</p>
-</body>
+    <p>2.再上传需要六面转上机的output.xml文件</p>
+    <p>3.再上传需要电子锯上机的CUT文件</p>
+    <p><input type="file" name="xlfile" id="xlf"> 上传xlsm</p>
+    <p><input type="file" name="xmlfile" id="xmlf"> 上传output.xml</p>
+    <p><input type="file" name="cutfile" id="cutf"> 上传XXXXX.CUT</p>
+
 <script>
 var list = []
+var f_name = ''
 
 function addLis() {
     var xlf = document.getElementById('xlf');
@@ -34,14 +37,41 @@ function addLis() {
 
     var xmlf = document.getElementById('xmlf');
     if(xmlf.addEventListener) xmlf.addEventListener('change', xmlhandleFile, false);
+
+    var cutf = document.getElementById('cutf');
+    if(cutf.addEventListener) cutf.addEventListener('change', cuthandleFile, false);
 }
 
 addLis();
+
+function cuthandleFile(e) {
+    var files = e.target.files;
+    var f = files[0];
+    cutreadFile(f);
+}
 
 function xmlhandleFile(e) {
     var files = e.target.files;
     var f = files[0];
     xmlreadFile(f);
+}
+
+function cutreadFile(file) {
+
+var name = file.name;
+var reader = new FileReader();
+reader.onload = function (e) {
+    // var data = utf8encode(e.target.result);
+    var data = e.target.result;
+    list.forEach(x => {
+        data = data.replace('F3="'+x.src_id+'"','F3="'+x.qrcode+'"')
+        // data = data.replace(x.new_id,x.qrcode)
+    });
+    data = data.replace('encoding="UTF-16"','encoding="UTF-8"')
+    console.log(data);
+    savefile(new Blob([data],{type: "text/plain;charset=utf-8"}),f_name+'_dianziju.CUT')
+};
+reader.readAsText(file,'UTF8');
 }
 
 function xmlreadFile(file) {
@@ -56,12 +86,12 @@ function xmlreadFile(file) {
             // data = data.replace(x.new_id,x.qrcode)
         });
         console.log(data);
-        savefile(new Blob([data]),{type: "text/plain;charset=utf-8"})
+        savefile(new Blob([data],{type: "text/plain;charset=utf-8"}),f_name+'_liumianzhuan.xml')
     };
     reader.readAsText(file,'UTF8');
 }
 
-function savefile(blob) {
+function savefile(blob,filename) {
     if (window.navigator && window.navigator.msSaveOrOpenBlob) {
         // IE浏览器
         window.navigator.msSaveOrOpenBlob(blob, fileName);
@@ -71,7 +101,7 @@ function savefile(blob) {
         
         var link = document.createElement("a");
         link.href = url;
-        link.download = decodeURI('output_new.xml');
+        link.download = decodeURI(filename);
         link.click();
         window.URL.revokeObjectURL(link.href);
     }
@@ -86,6 +116,7 @@ function handleFile(e) {
 function readFile(file) {
 
     var name = file.name;
+    f_name = name.replace(/.标签信息.*/,'')
     var reader = new FileReader();
     reader.onload = function (e) {
         var data = e.target.result;
@@ -115,4 +146,4 @@ function readFile(file) {
     reader.readAsBinaryString(file);
 }
 </script>
-</html>
+</body></html>
